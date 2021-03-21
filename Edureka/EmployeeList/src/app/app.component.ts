@@ -7,5 +7,5 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'EmployeeList';
+    title = 'Welcome to the Employee List app !';
 }

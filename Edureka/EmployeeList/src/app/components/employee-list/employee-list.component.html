@@ -1,1 +1,50 @@
 <p>employee-list works!</p>
+
+<div class="panel rounded">
+    <table id="employeeList">
+        <thead>
+            <tr>
+                <td>
+                    <label>Employee ID</label>
+                </td>
+                <td>
+                    <label>First Name</label>
+                </td>
+                <td>
+                    <label>Last Name</label>
+                </td>
+                <td>
+                    <label>Dept</label>
+                </td>
+                <td>
+                    <label>City</label>
+                </td>
+                <td>
+                    <label>Email</label>
+                </td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let employee of employees">
+            <tr>
+                <td>
+                    <label>{{employee.id}}</label>
+                </td>
+                <td>
+                    <label>{{employee.firstName}}</label>
+                </td>
+                <td>
+                    <label>{{employee.lastName}}</label>
+                </td>
+                <td>
+                    <label>{{employee.dept}}</label>
+                </td>
+                <td>
+                    <label>{{employee.city}}</label>
+                </td>
+                <td>
+                    <label>{{employee.email}}</label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
