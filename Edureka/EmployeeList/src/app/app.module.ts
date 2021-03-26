@@ -6,15 +6,9 @@ import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EmployeeListComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, EmployeeListComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
