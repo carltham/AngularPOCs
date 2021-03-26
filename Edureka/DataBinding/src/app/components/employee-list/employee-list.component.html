@@ -1,0 +1,72 @@
+<div class="panel rounded">
+  <table id="employeeList">
+    <thead>
+      <tr>
+        <td style="width:{{ column[0] }}%">
+          <label>Employee ID</label>
+        </td>
+        <td style="width:{{ column[1] }}%">
+          <label>First Name</label>
+        </td>
+        <td style="width:{{ column[2] }}%">
+          <label>Last Name</label>
+        </td>
+        <td style="width:{{ column[3] }}%">
+          <label>Dept</label>
+        </td>
+        <td style="width:{{ column[4] }}%">
+          <label>City</label>
+        </td>
+        <td style="width:{{ column[5] }}%">
+          <label>Email</label>
+        </td>
+      </tr>
+    </thead>
+    <tbody *ngFor="let employee of employees">
+      <tr
+        (click)="editEmp(employee.id)"
+        [class.selected]="employee.id === selectedEmployee.id"
+      >
+        <td>
+          <label>{{ employee.id }}</label>
+        </td>
+        <td>
+          <label>{{ employee.firstName }}</label>
+        </td>
+        <td>
+          <label>{{ employee.lastName }}</label>
+        </td>
+        <td>
+          <label>{{ employee.dept }}</label>
+        </td>
+        <td>
+          <label>{{ employee.city }}</label>
+        </td>
+        <td>
+          <label>{{ employee.email }}</label>
+        </td>
+      </tr>
+      <tr *ngIf="employee.id == selectedEmployee.id">
+        <td>
+          <input class="half" disabled value="{{ selectedEmployee.id }}" />
+          <button (click)="updateEmp()">Update</button>
+        </td>
+        <td>
+          <input id="firstname" [(ngModel)]="selectedEmployee.firstName" />
+        </td>
+        <td>
+          <input id="lastName" [(ngModel)]="selectedEmployee.lastName" />
+        </td>
+        <td>
+          <input id="dept" [(ngModel)]="selectedEmployee.dept" />
+        </td>
+        <td>
+          <input id="city" [(ngModel)]="selectedEmployee.city" />
+        </td>
+        <td>
+          <input id="email" [(ngModel)]="selectedEmployee.email" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
