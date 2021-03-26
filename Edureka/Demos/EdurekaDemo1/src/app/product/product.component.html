@@ -1,0 +1,196 @@
+<div>
+
+    <div class="row"><!--create a row--->
+      
+      
+      
+        <div class="col-8"><!--To use 8 grid in the screen--> 
+        
+        
+        
+        <div class="card"><!--create card-->
+        
+          <div class="card-header bg-info">SHOPPING LIST</div>
+        
+          <div class="card-body">
+        
+            <div class="row">
+              
+                <!--If your screen is extermely large use 4 grid-->
+                <!--If your screen is small use 6 grid-->
+                <!--If your screen is extermely small use 12 grid-->
+              <div class="col-xl-4 col-sm-6 col-12 border border-warning mb-2" >
+        
+        
+        
+              
+        
+                <div class="row text-center mb-2">
+        
+                  <div class="col-12">
+        
+                      <img class="img-fluid mt-3" src="#" alt="Card image cap">
+        
+                  </div>
+        
+                </div>
+        
+        
+        
+                <div class="row">
+        
+                  <div class="col-12">
+        
+                    <h6 class="card-title font-weight-bold" > </h6>
+        
+                  </div>
+        
+                </div>
+        
+        
+        
+                <div class="row">
+        
+                      <div class="col-md-6">
+        
+                        <p class="card-text"> <small>   </small></p>
+        
+                      </div>
+        
+                      <div class="col-md-6">
+        
+                      <p class="text-right"> <small> Rs   </small> </p>
+        
+                      </div>
+        
+                    </div>
+        
+                 <!--Add button-->        
+                <div class="row text-center mb-1">
+        
+                  <div class="col-12">
+        
+                    <button class="btn btn-sm btn-primary" (click)="addToCart(item)">Add to Cart</button>
+        
+                  </div>
+        
+                </div>
+        
+
+        
+              </div>
+        
+            </div>
+        
+          
+        
+          </div>
+        
+           <!--Add copyright-->
+          <div class="card-footer text-center">Copyright</div>
+        
+        </div>
+        
+        
+       </div>
+      
+      
+        <!--To create cart-->
+        <div class="col-xl-4">
+      
+        <div class="card">
+      
+        <div class="card-header bg-warning">
+      
+          <div >You have no items in your basket</div>
+      
+          
+      
+        </div>
+      
+        <div class="card-body">
+      
+          <div class="row">
+      
+            <div class="col-12">
+      
+              <div class="text-danger" *ngIf="errorItem">
+      
+                You have already this item in your list
+      
+              </div>
+      
+            </div>
+      
+          </div>
+      
+        <div class="row">
+      
+                <div class="col-12" >
+      <!--Table to hold the item add in the cart-->
+      <table class="table table-borderless">
+      
+          <thead><!--table head-->
+      
+            <tr><!--table row-->
+      
+              <th>Product</th><!--table heading-->
+      
+            
+      
+              <th>Amount</th>
+      
+                <th>Actions</th>
+      
+            </tr>
+      
+          </thead>
+      
+          <tbody> <!--table body-->
+      
+            <tr >
+      
+              <td> </td>
+      
+            <td> </td>
+      
+            <td>
+      
+              
+      
+            </td>
+      
+          
+      
+            </tr>
+      
+          
+      
+          </tbody>
+      
+        </table>
+      
+      
+      
+                </div>
+      
+              </div>
+      
+        </div>
+        <!--To add total amount-->
+        <div class="card-footer bg-dark text-white text-center">
+      
+          Total Amount: Rs. 
+      
+        </div>
+      
+      </div>
+      
+        </div>
+      
+    </div>
+      
+      
+      
+      
+ </div>

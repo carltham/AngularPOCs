@@ -1,0 +1,102 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Mar 21, 2021, 8:25:55 AM
+    Author     : carl
+*/
+
+.lowered{
+    margin-top: 200px;
+}
+.centered{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.draggable-group {
+    float: left;
+}
+
+.group-handle {
+    height: 34px;
+    width: 10px;
+    cursor: move;
+}
+
+.panel-heading {
+    cursor: move;
+}
+
+
+#sortable {
+    padding: 0px;
+}
+
+#sort-holder {
+    display: none;
+}
+
+#toggle-toolbox-tools {
+    cursor: pointer;
+}
+
+#close-toolbox-tools {
+    cursor: pointer;
+}
+
+.toggle-button-group {
+    cursor: pointer;
+}
+
+.draggable-group {
+    overflow: hidden;
+}
+
+.minimized {
+    width: 12px;
+    height: 36px;
+}
+
+.rounded{
+    border-width: 3px;
+    border-style: groove;
+    border-color: lightyellow;
+    border-radius: 5px;
+    padding: 0px 5px;
+}
+
+table {
+    width: 100%;
+    margin: 20px auto;
+    table-layout: auto;
+}
+
+table,
+td,
+th {
+    border-color: lightyellow;
+}
+
+thead td {
+    padding: 10px;
+    border: solid 1px;
+    border-style: ridge;
+    text-align: center;
+}
+tbody td{
+    border: none;
+    padding: 5px;
+}
+
+#toolbox-tools {
+    overflow: hidden;
+}
+
+
+
+
+
+
