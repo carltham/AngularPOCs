@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { throwError } from 'rxjs';
-import { Employee } from '../../domain/employee';
+import { Employee } from 'src/app/domain/employee';
+import { Header } from 'src/app/domain/Header';
+import { EmployeeDataService } from '../../services/employeeDataService';
 
 @Component({
   selector: 'employee-list',
@@ -8,48 +9,15 @@ import { Employee } from '../../domain/employee';
   styleUrls: ['./employee-list.component.css'],
 })
 export class EmployeeListComponent implements OnInit {
-  column = [1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7];
+  column: number[] = [];
 
   selectedEmployee: Employee = this.cleanEmployee();
   selectedEmployeeFixedId: number = 0;
-  employees: Employee[] = [
-    {
-      id: 5,
-      firstName: 'Test',
-      lastName: 'Person',
-      dept: 'Lower',
-      city: 'Sometown',
-      email: 'no@name.at.all',
-    },
-    {
-      id: 10,
-      firstName: 'TestAgain',
-      lastName: 'Person2',
-      dept: 'Upper',
-      city: 'AnotherTown',
-      email: 'nil@name.at.all',
-    },
-  ];
+  employees: Employee[] = [];
 
-  constructor() {}
-
-  cleanEmployee(): Employee {
-    this.selectedEmployeeFixedId = -1;
-    return {
-      id: -1,
-      firstName: '',
-      lastName: '',
-      dept: '',
-      city: '',
-      email: '',
-    };
-  }
+  constructor(private employeeDataService: EmployeeDataService) {}
 
   editEmp(selectedId: number) {
-    if (selectedId == this.selectedEmployeeFixedId) {
-      this.selectedEmployee = this.cleanEmployee();
-      return;
-    }
     let foundemployee = this.employees.find((empl) => {
       return empl.id === selectedId;
     });
@@ -59,17 +27,56 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
-  cloneOf(emp: Employee): Employee {
-    return JSON.parse(JSON.stringify(emp));
-  }
-
   updateEmp() {
     if (this.selectedEmployee.id !== this.selectedEmployeeFixedId) {
       // Just in case ...
       throw Error('Attemt to change a key is forbidden !!');
     }
     let index = 0;
-    let foundIndex;
+    let foundIndex = this.findEmployeeIndex();
+
+    if (foundIndex >= 0) {
+      this.employees[foundIndex] = this.selectedEmployee;
+      this.selectedEmployee = this.cleanEmployee();
+    }
+  }
+
+  cancelUpdate() {
+    if (this.selectedEmployee.id !== this.selectedEmployeeFixedId) {
+      // Just in case ...
+      throw Error('Attemt to change a key is forbidden !!');
+    }
+    let index = 0;
+    let foundIndex = this.findEmployeeIndex();
+
+    if (foundIndex >= 0) {
+      //Enforce update
+      this.employees[foundIndex] = this.cloneOf(this.employees[foundIndex]);
+      this.selectedEmployee = this.cleanEmployee();
+    }
+  }
+
+  cleanEmployee(): Employee {
+    this.selectedEmployeeFixedId = -1;
+    return {
+      id: -1,
+      dob: '',
+      firstName: '',
+      lastName: '',
+      salary: -1,
+      dept: '',
+      city: '',
+      email: '',
+    };
+  }
+
+  cloneOf(emp: Employee): Employee {
+    return JSON.parse(JSON.stringify(emp));
+  }
+
+  findEmployeeIndex() {
+    let index = 0;
+    let foundIndex = -1;
     this.employees.find((employee) => {
       let wasFound = employee.id === this.selectedEmployeeFixedId;
       if (wasFound) {
@@ -78,12 +85,13 @@ export class EmployeeListComponent implements OnInit {
       index++;
       return wasFound;
     });
-
-    if (foundIndex) {
-      this.employees[foundIndex] = this.selectedEmployee;
-      this.selectedEmployee = this.cleanEmployee();
-    }
+    return foundIndex;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.employees = this.employeeDataService.getEmployees();
+  }
+  get headers(): Header[] {
+    return this.employeeDataService.getHeaders();
+  }
 }
