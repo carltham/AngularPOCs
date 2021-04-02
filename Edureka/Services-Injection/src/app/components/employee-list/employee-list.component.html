@@ -1,0 +1,74 @@
+<div class="panel rounded">
+  <label style="color: red"
+    >Salary field is currency pipe chained with uppercase pipe instead of DOB
+    field !!!</label
+  >
+  <table id="employeeList">
+    <thead>
+      <tr>
+        <td *ngFor="let header of headers" style="width:{{ header.width }}%">
+          <label>{{ header.text }}</label>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let employee of employees"
+        colorDirective
+        (click)="editEmp(employee.id)"
+        [class.selected]="employee.id === selectedEmployee.id"
+      >
+        <td>
+          <label>{{ employee.id }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <button (click)="updateEmp()">Update</button>
+            <button (click)="cancelUpdate()">Cancel</button>
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.dob | date: "MM-dd-YYYY" }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <button (click)="updateEmp()">Update</button>
+            <button (click)="cancelUpdate()">Cancel</button>
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.firstName }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <input id="firstname" [(ngModel)]="selectedEmployee.firstName" />
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.lastName }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <input id="lastName" [(ngModel)]="selectedEmployee.lastName" />
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.salary | currency: "sek " | uppercase }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <input id="dept" [(ngModel)]="selectedEmployee.dept" />
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.dept }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <input id="dept" [(ngModel)]="selectedEmployee.dept" />
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.city }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <input id="city" [(ngModel)]="selectedEmployee.city" />
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.email }}</label>
+          <div *ngIf="employee.id == selectedEmployee.id">
+            <input id="email" [(ngModel)]="selectedEmployee.email" />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
