@@ -51,7 +51,7 @@ export class EmployeeDataService {
 
   getHeaders() {
     const headers: Header[] = [
-      { number: 0, width: 5, text: "ID" },
+      { number: 0, width: 15, text: "ID" },
       { number: 0, width: 12, text: "DOB (MM-dd-YYYY)" },
       { number: 1, width: -1, text: "First Name" },
       { number: 2, width: -1, text: "Last Name" },

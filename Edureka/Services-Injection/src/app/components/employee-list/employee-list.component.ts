@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Employee } from 'src/app/domain/employee';
-import { Header } from 'src/app/domain/Header';
-import { EmployeeDataService } from '../../services/employeeDataService';
+import { Component, OnInit } from "@angular/core";
+import { Employee } from "src/app/domain/employee";
+import { Header } from "src/app/domain/Header";
+import { EmployeeDataService } from "../../services/employeeDataService";
 
 @Component({
-  selector: 'employee-list',
-  templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css'],
+  selector: "employee-list",
+  templateUrl: "./employee-list.component.html",
+  styleUrls: ["./employee-list.component.css"],
 })
 export class EmployeeListComponent implements OnInit {
   column: number[] = [];
@@ -17,10 +17,12 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(private employeeDataService: EmployeeDataService) {}
 
-  editEmp(selectedId: number) {
+  edit(selectedId: number) {
+    console.log("selectedId=", selectedId);
     let foundemployee = this.employees.find((empl) => {
       return empl.id === selectedId;
     });
+    console.log("foundemployee=", foundemployee);
     if (foundemployee) {
       this.selectedEmployeeFixedId = foundemployee.id;
       this.selectedEmployee = this.cloneOf(foundemployee);
@@ -30,10 +32,11 @@ export class EmployeeListComponent implements OnInit {
   updateEmp() {
     if (this.selectedEmployee.id !== this.selectedEmployeeFixedId) {
       // Just in case ...
-      throw Error('Attemt to change a key is forbidden !!');
+      throw Error("Attemt to change a key is forbidden !!");
     }
     let index = 0;
     let foundIndex = this.findEmployeeIndex();
+    console.log("foundIndex=", foundIndex);
 
     if (foundIndex >= 0) {
       this.employees[foundIndex] = this.selectedEmployee;
@@ -44,7 +47,7 @@ export class EmployeeListComponent implements OnInit {
   cancelUpdate() {
     if (this.selectedEmployee.id !== this.selectedEmployeeFixedId) {
       // Just in case ...
-      throw Error('Attemt to change a key is forbidden !!');
+      throw Error("Attemt to change a key is forbidden !!");
     }
     let index = 0;
     let foundIndex = this.findEmployeeIndex();
@@ -60,13 +63,13 @@ export class EmployeeListComponent implements OnInit {
     this.selectedEmployeeFixedId = -1;
     return {
       id: -1,
-      dob: '',
-      firstName: '',
-      lastName: '',
+      dob: "",
+      firstName: "",
+      lastName: "",
       salary: -1,
-      dept: '',
-      city: '',
-      email: '',
+      dept: "",
+      city: "",
+      email: "",
     };
   }
 
@@ -91,6 +94,7 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit(): void {
     this.employees = this.employeeDataService.getEmployees();
   }
+
   get headers(): Header[] {
     return this.employeeDataService.getHeaders();
   }

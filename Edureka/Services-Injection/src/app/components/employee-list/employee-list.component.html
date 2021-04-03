@@ -1,8 +1,4 @@
 <div class="panel rounded">
-  <label style="color: red"
-    >Salary field is currency pipe chained with uppercase pipe instead of DOB
-    field !!!</label
-  >
   <table id="employeeList">
     <thead>
       <tr>
@@ -13,23 +9,28 @@
     </thead>
     <tbody>
       <tr
+        id="row-{{ employee.id }}"
         *ngFor="let employee of employees"
-        colorDirective
-        (click)="editEmp(employee.id)"
         [class.selected]="employee.id === selectedEmployee.id"
+        colorDirective
       >
         <td>
-          <label>{{ employee.id }}</label>
-          <div *ngIf="employee.id == selectedEmployee.id">
+          <div *ngIf="employee.id !== selectedEmployee.id" style="width: 100%">
+            <button (click)="edit(employee.id)">Edit</button>
+            <label>
+              {{ employee.id }}
+            </label>
+          </div>
+          <div *ngIf="employee.id === selectedEmployee.id">
             <button (click)="updateEmp()">Update</button>
             <button (click)="cancelUpdate()">Cancel</button>
           </div>
         </td>
+
         <td>
           <label>{{ employee.dob | date: "MM-dd-YYYY" }}</label>
           <div *ngIf="employee.id == selectedEmployee.id">
-            <button (click)="updateEmp()">Update</button>
-            <button (click)="cancelUpdate()">Cancel</button>
+            <input id="dob" [(ngModel)]="selectedEmployee.dob" />
           </div>
         </td>
         <td>
@@ -47,7 +48,7 @@
         <td>
           <label>{{ employee.salary | currency: "sek " | uppercase }}</label>
           <div *ngIf="employee.id == selectedEmployee.id">
-            <input id="dept" [(ngModel)]="selectedEmployee.dept" />
+            <input id="salary" [(ngModel)]="selectedEmployee.salary" />
           </div>
         </td>
         <td>
