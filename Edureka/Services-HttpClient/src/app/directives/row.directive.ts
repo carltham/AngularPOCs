@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[colorDirective]',
+  selector: '[rowDirective]',
 })
-export class colorDirective {
+export class rowDirective {
   oldBackgroundColor = '';
   constructor(private elememtRef: ElementRef) {}
   @HostListener('mouseenter') onMouseEnter() {

@@ -1,21 +1,21 @@
 import { Component, OnInit } from "@angular/core";
-import { Employee } from "src/app/domain/employee";
+import { FakeEmployee } from "src/app/domain/employee-fake";
 import { Header } from "src/app/domain/Header";
-import { EmployeeDataService } from "../../services/employeeDataService";
+import { FakeEmplService } from "src/app/services/fake-employee-service";
 
 @Component({
   selector: "employee-list",
-  templateUrl: "./employee-list.component.html",
-  styleUrls: ["./employee-list.component.css"],
+  templateUrl: "./fake-employees-list.component.html",
+  styleUrls: ["./fake-employees-list.component.css"],
 })
-export class EmployeeListComponent implements OnInit {
+export class FakeEmplListComponent implements OnInit {
   column: number[] = [];
 
-  selectedEmployee: Employee = this.cleanEmployee();
+  selectedEmployee: FakeEmployee = this.cleanEmployee();
   selectedEmployeeFixedId: number = 0;
-  employees: Employee[] = [];
+  employees: FakeEmployee[] = [];
 
-  constructor(private employeeDataService: EmployeeDataService) {}
+  constructor(private fakeEmplService: FakeEmplService) {}
 
   edit(selectedId: number) {
     console.log("selectedId=", selectedId);
@@ -59,7 +59,7 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
-  cleanEmployee(): Employee {
+  cleanEmployee(): FakeEmployee {
     this.selectedEmployeeFixedId = -1;
     return {
       id: -1,
@@ -73,7 +73,7 @@ export class EmployeeListComponent implements OnInit {
     };
   }
 
-  cloneOf(emp: Employee): Employee {
+  cloneOf(emp: FakeEmployee): FakeEmployee {
     return JSON.parse(JSON.stringify(emp));
   }
 
@@ -92,10 +92,10 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employees = this.employeeDataService.getEmployees();
+    this.employees = this.fakeEmplService.getEmployees();
   }
 
   get headers(): Header[] {
-    return this.employeeDataService.getHeaders();
+    return this.fakeEmplService.getHeaders();
   }
 }

@@ -1,4 +1,4 @@
-export interface Employee {
+export interface FakeEmployee {
   id: number;
   dob: string;
   firstName: string;

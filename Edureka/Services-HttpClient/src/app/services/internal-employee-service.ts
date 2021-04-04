@@ -4,12 +4,12 @@ import { Observable } from "rxjs";
 
 import { Header } from "../domain/Header";
 import { Config } from "../support/config";
-import { Employee2 } from "../domain/employee2";
+import { InternalEmployee } from "../domain/employee-internal";
 
 @Injectable({
   providedIn: "root",
 })
-export class EmployeeService {
+export class InternalEmplService {
   constructor(private http: HttpClient) {}
 
   getHeaders() {
@@ -28,12 +28,12 @@ export class EmployeeService {
 
     return headers;
   }
-  fetchNew(): Observable<Employee2> {
+  fetchNew(): Observable<InternalEmployee> {
     let url = Config.baseUrl + Config.new;
-    return this.http.get<Employee2>(url);
+    return this.http.get<InternalEmployee>(url);
   }
-  update(newEmployee: Employee2): Observable<any> {
+  update(newEmployee: InternalEmployee): Observable<any> {
     let url = Config.baseUrl + Config.save;
-    return this.http.post<Employee2>(url, newEmployee);
+    return this.http.post<InternalEmployee>(url, newEmployee);
   }
 }

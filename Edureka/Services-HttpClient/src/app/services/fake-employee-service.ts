@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Header } from "../domain/Header";
 
 @Injectable()
-export class EmployeeDataService {
+export class FakeEmplService {
   public getEmployees() {
     const employees = [
       {

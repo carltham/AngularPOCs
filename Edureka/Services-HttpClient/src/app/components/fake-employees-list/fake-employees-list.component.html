@@ -12,7 +12,7 @@
         id="row-{{ employee.id }}"
         *ngFor="let employee of employees"
         [class.selected]="employee.id === selectedEmployee.id"
-        colorDirective
+        rowDirective
       >
         <td>
           <div *ngIf="employee.id !== selectedEmployee.id" style="width: 100%">

@@ -1,4 +1,4 @@
-export interface Employee2 {
+export interface InternalEmployee {
   id: number;
   employee_name: string;
   employee_salary: number;

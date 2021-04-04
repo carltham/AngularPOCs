@@ -1,18 +1,18 @@
 import { Component, OnInit } from "@angular/core";
-import { Employee2 } from "src/app/domain/employee2";
+import { InternalEmployee } from "src/app/domain/employee-internal";
 import { Header } from "src/app/domain/Header";
-import { EmployeeService } from "src/app/services/employee-service";
+import { InternalEmplService } from "src/app/services/internal-employee-service";
 
 @Component({
   selector: "newemployee",
-  templateUrl: "./newemployee.component.html",
-  styleUrls: ["./newemployee.component.css"],
+  templateUrl: "./new-internal-employee.component.html",
+  styleUrls: ["./new-internal-employee.component.css"],
 })
-export class NewEmployeeComponent implements OnInit {
-  newEmployee: Employee2 = this.cleanEmployee();
+export class NewIntEmplComponent implements OnInit {
+  newEmployee: InternalEmployee = this.cleanEmployee();
   errorMessage: string = "";
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: InternalEmplService) {}
 
   fetchNew() {
     this.employeeService.fetchNew().subscribe(
@@ -43,7 +43,7 @@ export class NewEmployeeComponent implements OnInit {
     this.newEmployee = this.cleanEmployee();
   }
 
-  cleanEmployee(): Employee2 {
+  cleanEmployee(): InternalEmployee {
     return {
       id: -1,
       employee_name: "",

@@ -1,29 +1,24 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from "@angular/core/testing";
+import { ComponentFixture, fakeAsync, TestBed } from "@angular/core/testing";
 import { FormsModule } from "@angular/forms";
 
-import { colorDirective } from "src/app/directives/color.directive";
-import { EmployeeDataService } from "src/app/services/employeeDataService";
-import { EmployeeListComponent } from "./employee-list.component";
+import { rowDirective } from "src/app/directives/row.directive";
+import { FakeEmplService } from "src/app/services/fake-employee-service";
+import { FakeEmplListComponent } from "./fake-employees-list.component";
 
-describe("EmployeeListComponent", () => {
-  let component: EmployeeListComponent;
-  let fixture: ComponentFixture<EmployeeListComponent>;
+describe("FakeEmplListComponent", () => {
+  let component: FakeEmplListComponent;
+  let fixture: ComponentFixture<FakeEmplListComponent>;
   // let spies: any = {};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [EmployeeListComponent, colorDirective],
-      providers: [EmployeeDataService],
+      declarations: [FakeEmplListComponent, rowDirective],
+      providers: [FakeEmplService],
     })
       .compileComponents()
       .then(() => {
-        fixture = TestBed.createComponent(EmployeeListComponent);
+        fixture = TestBed.createComponent(FakeEmplListComponent);
         component = fixture.componentInstance;
         fixture.autoDetectChanges();
       });

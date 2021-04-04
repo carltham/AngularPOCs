@@ -4,24 +4,24 @@ import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { EmployeeListComponent } from "./components/employee-list/employee-list.component";
-import { GlobalErrorHandler } from "./services/globalErrorHandler";
-import { colorDirective } from "./directives/color.directive";
-import { EmployeeDataService } from "./services/employeeDataService";
-import { NewEmployeeComponent } from "./components/newemployee/newemployee.component";
+import { FakeEmplListComponent } from "./components/fake-employees-list/fake-employees-list.component";
+import { GlobalErrorHandler } from "./support/globalErrorHandler";
+import { rowDirective } from "./directives/row.directive";
+import { FakeEmplService } from "./services/fake-employee-service";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { NewIntEmplComponent } from "./components/new-internal-employee/new-internal-employee.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent,
-    colorDirective,
-    NewEmployeeComponent,
+    FakeEmplListComponent,
+    rowDirective,
+    NewIntEmplComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    EmployeeDataService,
+    FakeEmplService,
   ],
   bootstrap: [AppComponent],
 })

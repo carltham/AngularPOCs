@@ -12,33 +12,32 @@ import {
   waitForAsync,
 } from "@angular/core/testing";
 import { FormsModule } from "@angular/forms";
-import { Employee2 } from "src/app/domain/employee2";
-import { EmployeeService } from "src/app/services/employee-service";
+import { InternalEmployee } from "src/app/domain/employee-internal";
+import { InternalEmplService } from "src/app/services/internal-employee-service";
+import { NewIntEmplComponent } from "./new-internal-employee.component";
 
-import { NewEmployeeComponent } from "./newemployee.component";
-
-let employee: Employee2;
+let employee: InternalEmployee;
 let httpMock: HttpTestingController;
 let httpClient: HttpClient;
 
-describe("NewEmployeeComponent", () => {
-  let component: NewEmployeeComponent;
-  let fixture: ComponentFixture<NewEmployeeComponent>;
-  let service: EmployeeService;
+describe("NewIntEmplComponent", () => {
+  let component: NewIntEmplComponent;
+  let fixture: ComponentFixture<NewIntEmplComponent>;
+  let service: InternalEmplService;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, HttpClientTestingModule],
-        declarations: [NewEmployeeComponent],
+        declarations: [NewIntEmplComponent],
         providers: [],
       })
         .compileComponents()
         .then(() => {
-          fixture = TestBed.createComponent(NewEmployeeComponent);
+          fixture = TestBed.createComponent(NewIntEmplComponent);
           component = fixture.componentInstance;
           fixture.autoDetectChanges();
-          service = TestBed.inject(EmployeeService);
+          service = TestBed.inject(InternalEmplService);
           httpMock = TestBed.inject(HttpTestingController);
           httpClient = TestBed.inject(HttpClient);
           employee = {

@@ -267,6 +267,10 @@ svg#clouds {
   z-index: -10;
   width: 1920px;
 }
+td > label {
+  width: 50px !important;
+  max-width: 100px;
+}
 
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
