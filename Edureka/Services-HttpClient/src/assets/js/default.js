@@ -11,14 +11,14 @@ $(document).ready(function () {
       stop: function (evt, el) {
         // Save size and position in cookie
         /*
-             $.cookie($(evt.target).attr("id"), JSON.stringify({
-             "el": $(evt.target).attr("id"),
-             "left": el.position.left,
-             "top": el.position.top,
-             "width": $(evt.target).width(),
-             "height": $(evt.target).height()
-             }));
-             */
+         $.cookie($(evt.target).attr("id"), JSON.stringify({
+         "el": $(evt.target).attr("id"),
+         "left": el.position.left,
+         "top": el.position.top,
+         "width": $(evt.target).width(),
+         "height": $(evt.target).height()
+         }));
+         */
       },
     })
     .resizable({
@@ -26,14 +26,14 @@ $(document).ready(function () {
       stop: function (evt, el) {
         // Save size and position in cookie
         /*
-             $.cookie($(evt.target).attr("id"), JSON.stringify({
-             "el": $(evt.target).attr("id"),
-             "left": el.position.left,
-             "top": el.position.top,
-             "width": el.size.width,
-             "height": el.size.height
-             }));
-             */
+         $.cookie($(evt.target).attr("id"), JSON.stringify({
+         "el": $(evt.target).attr("id"),
+         "left": el.position.left,
+         "top": el.position.top,
+         "width": el.size.width,
+         "height": el.size.height
+         }));
+         */
       },
     });
 

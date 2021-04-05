@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 
 import { Header } from "../domain/Header";
 import { Config } from "../support/config";
-import { InternalEmployee } from "../domain/employee-internal";
+import { ExternalEmployee } from "../domain/com.restapiexample/employee-external";
 
 @Injectable({
   providedIn: "root",
@@ -28,12 +28,12 @@ export class InternalEmplService {
 
     return headers;
   }
-  fetchNew(): Observable<InternalEmployee> {
+  fetchNew(): Observable<ExternalEmployee> {
     let url = Config.baseUrl + Config.new;
-    return this.http.get<InternalEmployee>(url);
+    return this.http.get<ExternalEmployee>(url);
   }
-  update(newEmployee: InternalEmployee): Observable<any> {
+  update(newEmployee: ExternalEmployee): Observable<any> {
     let url = Config.baseUrl + Config.save;
-    return this.http.post<InternalEmployee>(url, newEmployee);
+    return this.http.post<ExternalEmployee>(url, newEmployee);
   }
 }

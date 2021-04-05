@@ -1,16 +1,19 @@
 import { Request, Response } from "express";
 import { Employee2 } from "../../domain/employee2";
-import { CSVHandler } from "../../tools/csv-parser";
+import { FakeDB } from "../../tools/fakeDB";
 import { CrudController } from "../CrudController";
 
 export class UserController extends CrudController {
   _userIndex = 0;
-  dataFile: string = "dist/users.txt";
-  private csvHandler: CSVHandler = new CSVHandler();
+  static dataFile: string = <string>(<any>null);
+  private fakeDB: FakeDB = new FakeDB();
 
   constructor() {
     super();
-    this.csvHandler.assureFileExists(this.dataFile);
+    if (!UserController.dataFile) {
+      UserController.dataFile = "dist/users.txt";
+    }
+    this.fakeDB.assureFileExists(UserController.dataFile);
     this.loadUsersArray();
   }
   create(req: Request, res: Response): void {
@@ -23,12 +26,10 @@ export class UserController extends CrudController {
 
   update(req: Request<Employee2>, res: Response): void {
     const reFreshedUser: Employee2 = <Employee2>req.body;
-    console.log("reFreshedUser=", reFreshedUser);
     let users: Employee2[];
     this.loadUsersArray().then((result) => {
       users = result;
       const foundUsers = users.filter((user) => user.id === reFreshedUser.id);
-      console.log("foundUsers=", foundUsers);
       if (foundUsers.length === 0) {
         users.push(reFreshedUser);
         this.nextUserIndex++;
@@ -36,7 +37,6 @@ export class UserController extends CrudController {
         const remainingUsers = users.filter(
           (user) => user.id !== reFreshedUser.id
         );
-        console.log("remainingUsers=", remainingUsers);
         remainingUsers.push(reFreshedUser);
         users = remainingUsers;
       } else
@@ -49,7 +49,7 @@ export class UserController extends CrudController {
 
       users.sort(this.sortById);
 
-      this.csvHandler.write(this.dataFile, users);
+      this.fakeDB.write(UserController.dataFile, users);
       res.sendStatus(200);
     });
   }
@@ -74,14 +74,12 @@ export class UserController extends CrudController {
   }
 
   async loadUsersArray() {
-    let _users: Employee2[] = await this.csvHandler.processLineByLine(
-      this.dataFile
+    let _users: Employee2[] = await this.fakeDB.processLineByLine(
+      UserController.dataFile
     );
-    console.log("_users=", _users);
     _users.sort(this.sortById);
     const lastUser = _users[_users.length - 1];
     this.nextUserIndex = lastUser ? lastUser.id + 1 : 0;
-    console.log("nextUserIndex=", this.nextUserIndex);
     return _users;
   }
 

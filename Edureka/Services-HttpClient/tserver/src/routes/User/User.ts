@@ -1,4 +1,5 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import { Request, Response } from "express";
 import { userController } from "../../controllers";
 import { Employee2 } from "../../domain/employee2";
 

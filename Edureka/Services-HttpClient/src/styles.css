@@ -26,3 +26,40 @@ html {
 .card-deck .card {
   min-width: 220px;
 }
+
+button {
+  min-width: 50px;
+}
+
+label {
+  padding: 10px;
+}
+nav > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav > ul > li {
+  float: left;
+}
+
+nav > ul > li a {
+  display: block;
+  padding: 8px;
+  margin: 2px;
+  background-color: #dddddd;
+  border-style: outset;
+  border-radius: 10px;
+}
+
+nav > ul > li a:hover {
+  background-color: lightgoldenrodyellow;
+  border-style: outset;
+}
+
+nav > ul > li a:active {
+  background-color: orange;
+  border-style: inset;
+}

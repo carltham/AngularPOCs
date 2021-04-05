@@ -12,11 +12,11 @@ import {
   waitForAsync,
 } from "@angular/core/testing";
 import { FormsModule } from "@angular/forms";
-import { InternalEmployee } from "src/app/domain/employee-internal";
+import { ExternalEmployee } from "src/app/domain/com.restapiexample/employee-external";
 import { InternalEmplService } from "src/app/services/internal-employee-service";
 import { NewIntEmplComponent } from "./new-internal-employee.component";
 
-let employee: InternalEmployee;
+let employee: ExternalEmployee;
 let httpMock: HttpTestingController;
 let httpClient: HttpClient;
 

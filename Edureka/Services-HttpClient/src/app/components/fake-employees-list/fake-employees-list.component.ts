@@ -15,14 +15,13 @@ export class FakeEmplListComponent implements OnInit {
   selectedEmployeeFixedId: number = 0;
   employees: FakeEmployee[] = [];
 
-  constructor(private fakeEmplService: FakeEmplService) {}
+  constructor(private fakeEmplService: FakeEmplService) { }
 
   edit(selectedId: number) {
-    console.log("selectedId=", selectedId);
     let foundemployee = this.employees.find((empl) => {
       return empl.id === selectedId;
     });
-    console.log("foundemployee=", foundemployee);
+
     if (foundemployee) {
       this.selectedEmployeeFixedId = foundemployee.id;
       this.selectedEmployee = this.cloneOf(foundemployee);
@@ -36,7 +35,6 @@ export class FakeEmplListComponent implements OnInit {
     }
     let index = 0;
     let foundIndex = this.findEmployeeIndex();
-    console.log("foundIndex=", foundIndex);
 
     if (foundIndex >= 0) {
       this.employees[foundIndex] = this.selectedEmployee;

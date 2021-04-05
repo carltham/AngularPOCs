@@ -4,17 +4,17 @@ import { Observable } from "rxjs";
 
 import { Header } from "../domain/Header";
 import { Config } from "../support/config";
-import { InternalEmployee } from "../domain/employee-internal";
+import { ExternalEmployee } from "../domain/com.restapiexample/employee-external";
 
 @Injectable({
   providedIn: "root",
 })
 export class ExternalEmplService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getHeaders() {
     const headers: Header[] = [
-      { number: 0, width: 5, text: "ID" },
+      { number: 0, width: 15, text: "ID" },
       { number: 1, width: 12, text: "Name" },
       { number: 2, width: 13, text: "Salary" },
       { number: 3, width: -1, text: "Age" },
@@ -28,12 +28,9 @@ export class ExternalEmplService {
 
     return headers;
   }
-  fetchNew(): Observable<InternalEmployee> {
-    let url = Config.baseUrl + Config.new;
-    return this.http.get<InternalEmployee>(url);
-  }
-  update(newEmployee: InternalEmployee): Observable<any> {
-    let url = Config.baseUrl + Config.save;
-    return this.http.post<InternalEmployee>(url, newEmployee);
+
+  list(): Observable<ExternalEmployee> {
+    let url = Config.com_restapiexample;
+    return this.http.get<ExternalEmployee>(url);
   }
 }
