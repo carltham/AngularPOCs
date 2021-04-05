@@ -1,0 +1,10 @@
+<p>My page works!</p>
+
+Welcome
+<span *ngIf="selectedUserId >= 0">user nr : {{ selectedUserId }}</span>
+<span *ngIf="selectedUserId < 0">unknown user</span>
+!!
+
+<p class="linkLookAlike" (click)="goHome()">
+  But it's not much here, (click) lets go home!
+</p>

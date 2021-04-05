@@ -14,16 +14,33 @@
 
         <nav>
           <ul>
-            <li><a [routerLink]="['/until-module-4']">Until Module 4</a></li>
-            <li>
+            <li
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a [routerLink]="['']">Home</a>
+            </li>
+            <li routerLinkActive="active">
+              <a [routerLink]="['/until-module-4']">Until Module 4</a>
+            </li>
+            <li routerLinkActive="active">
               <a [routerLink]="['/services-injection']"
                 >4. Services-Injection</a
               >
             </li>
-            <li>
+            <li routerLinkActive="active">
               <a [routerLink]="['/services-httpclient']"
                 >4. Services-HttpClient</a
               >
+            </li>
+            <li routerLinkActive="active">
+              <a [routerLink]="['/secure-area']">SecureArea</a>
+            </li>
+            <li
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: false }"
+            >
+              <a [routerLink]="['/my-page']">My Page</a>
             </li>
           </ul>
         </nav>
@@ -32,10 +49,14 @@
         </i>
         <i class="fa pull-right fa-chevron-down" id="toggle-toolbox-tools"></i>
       </div>
-      <div class="panel-body">
-        <router-outlet> </router-outlet>
+      <div class="panel-body mainwidow">
+        <div class="panel-body">
+          <router-outlet> </router-outlet>
+        </div>
       </div>
-      <div class="panel-footer bottom">Panel footer</div>
+      <div class="panel-footer bottom">
+        <app-footer></app-footer>
+      </div>
     </div>
   </div>
 </div>

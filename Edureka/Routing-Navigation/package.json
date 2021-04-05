@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "concurrently \"ng serve --host 0.0.0.0\" \"cd tserver; npm run dev\"",
+        "start": "concurrently \"cd tserver; npm run dev\" \"ng serve --host 0.0.0.0\"",
         "build": "ng build",
         "test": "ng test",
         "coverage": "ng test --code-coverage",

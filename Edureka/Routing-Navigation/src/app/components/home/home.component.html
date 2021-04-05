@@ -1,0 +1,27 @@
+<div class="panel rounded centeredText">
+  <p>home works!</p>
+  Please ( <span class="linkLookAlike" (click)="doLogin()">login</span> ) !
+  <br />
+  or check user details<br />
+  <div class="content">
+    <div class="dialog">
+      <div *ngIf="selectedUser.id >= 0">
+        You selected user {{ selectedUser.fullName }}(
+        <span class="linkLookAlike" (click)="showDetails(selectedUser.id)">
+          details </span
+        >)
+      </div>
+      <ul>
+        <li
+          class="listButton"
+          [class.selected]="hasControlledUserDetails(user.id)"
+          *ngFor="let user of knownUsers"
+        >
+          <label (click)="selectUser(user.id)" class="linkLookAlike">
+            {{ user.fullName }}
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

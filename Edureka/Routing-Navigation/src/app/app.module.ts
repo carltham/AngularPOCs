@@ -12,6 +12,13 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NewIntEmplComponent } from "./components/new-internal-employee/new-internal-employee.component";
 import { ExternalEmplService } from "./services/external-employee-service";
 import { ExtEmplListComponent } from "./components/external-employees-list/external-employees-list.component";
+import { HomeComponent } from "./components/home/home.component";
+import { ErrorComponent } from "./components/error/error.component";
+import { MyPageComponent } from "./components/mypage/mypage.component";
+import { CommonModule } from "@angular/common";
+import { FooterComponent } from "./components/footer/footer.component";
+import { UserDetailsComponent } from "./components/user-details/user-details.component";
+import { NavHandlerService } from "./services/nav-handler.service";
 
 @NgModule({
   declarations: [
@@ -20,12 +27,24 @@ import { ExtEmplListComponent } from "./components/external-employees-list/exter
     rowDirective,
     NewIntEmplComponent,
     ExtEmplListComponent,
+    HomeComponent,
+    ErrorComponent,
+    MyPageComponent,
+    FooterComponent,
+    UserDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+  ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     FakeEmplService,
     ExternalEmplService,
+    NavHandlerService,
   ],
   bootstrap: [AppComponent],
 })
