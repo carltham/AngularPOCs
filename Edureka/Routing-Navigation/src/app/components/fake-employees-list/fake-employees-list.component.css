@@ -1,0 +1,14 @@
+table {
+  overflow: hidden;
+}
+
+td,
+th {
+  position: relative;
+}
+.selected {
+  background-color: beige;
+}
+td input {
+  width: 100%;
+}
