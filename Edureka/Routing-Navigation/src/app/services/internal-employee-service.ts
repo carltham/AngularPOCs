@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-import { Header } from "../domain/Header";
+import { Header } from "../domain/local/configuration/header";
 import { Config } from "../support/config";
 import { ExternalEmployee } from "../domain/com.restapiexample/employee-external";
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Header } from "../domain/Header";
-import { User } from "../domain/user";
+import { Header } from "../domain/local/configuration/header";
+import { User } from "../domain/in-class/user";
 
 @Injectable({
   providedIn: "root",
@@ -9,12 +9,11 @@ export class UserService {
   emptyUser: User = { id: -1, fullName: "", userName: "" };
 
   constructor() {}
+
   public getUser(id: number) {
     let foundUser = this.getUsers().find((user) => {
       return user.id === id;
     });
-    console.log("id = ", id);
-    console.log("foundUser = ", foundUser);
 
     return foundUser ? foundUser : this.emptyUser;
   }

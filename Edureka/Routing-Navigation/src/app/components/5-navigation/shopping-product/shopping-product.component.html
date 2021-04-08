@@ -1,0 +1,37 @@
+<div class="panel rounded">
+  <table id="products-table">
+    <thead>
+      <tr>
+        <td *ngFor="let head of headers" style="width:{{ head.width }}%">
+          <label>{{ head.text }}</label>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let object of objectList"
+        id="row-{{ object.id }}"
+        [class.selected]="object.id === selectedObject.id"
+        rowDirective
+      >
+        <td>
+          <label>
+            {{ object.id }}
+          </label>
+        </td>
+        <td>
+          <label>{{ object.name }}</label>
+        </td>
+
+        <td>
+          <label>{{ object.price }}</label>
+        </td>
+        <td>
+          <div *ngIf="object.id !== selectedObject.id" style="width: 100%">
+            <button (click)="showDetails(object.id)">Details</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
