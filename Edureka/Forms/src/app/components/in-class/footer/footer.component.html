@@ -1,0 +1,11 @@
+<p id="copyright">®Copyright Jeesof LTD - contact@jeesoft.uk</p>
+<button
+  [disabled]="!hasPrevious()"
+  class="btn btn-success"
+  (click)="toPrevious()"
+>
+  Back
+</button>
+<button [disabled]="!hasNext()" class="btn btn-success" (click)="toNext()">
+  Forward
+</button>

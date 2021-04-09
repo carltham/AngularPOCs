@@ -1,0 +1,44 @@
+<div class="panel rounded">
+  <table id="external-employees">
+    <thead>
+      <tr>
+        <td *ngFor="let head of headers" style="width:{{ head.width }}%">
+          <label>{{ head.text }}</label>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        id="row-{{ employee.id }}"
+        *ngFor="let employee of employees"
+        [class.selected]="employee.id === selectedEmployee.id"
+        rowDirective
+        >
+        <td>
+          <div *ngIf="employee.id !== selectedEmployee.id" style="width: 100%">
+            <button (click)="showDetails(employee.id)">Details</button>
+            <label>
+              {{ employee.id }}
+            </label>
+          </div>
+          <div *ngIf="employee.id === selectedEmployee.id">
+            <button (click)="closeDetails()">Close details</button>
+          </div>
+        </td>
+        <td>
+          <label>{{ employee.employee_name }}</label>
+        </td>
+
+        <td>
+          <label>{{ employee.employee_salary }}</label>
+        </td>
+        <td>
+          <label>{{ employee.employee_age }}</label>
+        </td>
+        <td>
+          <label>{{ employee.profile_image }}</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

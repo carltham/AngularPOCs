@@ -1,0 +1,48 @@
+<div class="container lowered">
+  <div class="centered">
+    <div
+      class="panel panel-primary draggable-panel toolbar-panel ui-draggable ui-resizable"
+      id="toolbox-tools"
+    >
+      <div class="panel-heading lang-panel-header-tools">
+        <img
+          width="40"
+          alt="Angular Logo"
+          src="../assets/images/AngularLogo.svg"
+        />
+        <span>{{ title }}</span>
+
+        <nav>
+          <ul>
+            <li
+              *ngFor="let route of routes"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="route.options"
+            >
+              <a [routerLink]="route.path">{{ route.text }}</a>
+            </li>
+            <li
+              *ngIf="isAuthenticated()"
+              routerLinkActive="no"
+              [routerLinkActiveOptions]="{ exact: false }"
+            >
+              <a [routerLink]="['/logout']">Logout</a>
+            </li>
+          </ul>
+        </nav>
+
+        <i class="fa fa-times pull-right close-panel" id="close-toolbox-tools">
+        </i>
+        <i class="fa pull-right fa-chevron-down" id="toggle-toolbox-tools"></i>
+      </div>
+      <div class="panel-body mainwidow">
+        <div class="panel-body">
+          <router-outlet> </router-outlet>
+        </div>
+      </div>
+      <div class="panel-footer bottom">
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+</div>
