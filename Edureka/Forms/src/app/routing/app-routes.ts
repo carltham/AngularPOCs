@@ -9,7 +9,7 @@ import { HttpClientComponent } from "../components/4-services/http-client/http-c
 import { HomeComponent } from "../components/in-class/home/home.component";
 import { ErrorComponent } from "../components/error/error.component";
 import { MyPageComponent } from "../components/in-class/mypage/mypage.component";
-import { UserDetailsComponent } from "../components/1-3-module/user-details/user-details.component";
+import { UserDetailsComponent } from "../components/in-class/home/user-details/user-details.component";
 import { BlogComponent } from "../components/in-class/blog/blog.component";
 import { URL_PATH } from "./url-paths";
 import { NewBlogComponent } from "../components/in-class/blog/new-blog/new-blog.component";

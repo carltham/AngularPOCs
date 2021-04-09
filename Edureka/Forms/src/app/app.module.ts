@@ -40,7 +40,7 @@ import { ServerResolverService } from "./services/in-class/server-resolver.servi
 import { ServersService } from "./services/in-class/servers.service";
 import { ServicesComponent } from "./components/4-services/services.component";
 import { ServicesHomeComponent } from "./components/4-services/services-home/services-home.component";
-import { UserDetailsComponent } from "./components/1-3-module/user-details/user-details.component";
+import { UserDetailsComponent } from "./components/in-class/home/user-details/user-details.component";
 
 @NgModule({
   declarations: [
