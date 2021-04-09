@@ -10,8 +10,8 @@
     <tbody>
       <tr
         *ngFor="let object of objectList"
+        [class.selected]="selectedResponseId === object.id"
         id="row-{{ object.id }}"
-        [class.selected]="object.id === selectedObject.id"
         rowDirective
       >
         <td>

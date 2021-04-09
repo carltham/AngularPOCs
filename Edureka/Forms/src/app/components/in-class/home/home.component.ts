@@ -38,10 +38,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  hasControlledUserDetails(id: number) {
-    return this.selectedResponseId === id;
-  }
-
   showDetails(id: number) {
     this.navHandler.toPath(URL_PATH.HOMEID.replace(":id", "" + id));
   }

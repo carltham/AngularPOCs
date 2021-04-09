@@ -17,7 +17,7 @@
       <ul>
         <li
           class="listButton"
-          [class.selected]="hasControlledUserDetails(user.id)"
+          [class.selected]="selectedResponseId === user.id"
           *ngFor="let user of knownUsers"
         >
           <label (click)="selectUser(user.id)" class="linkLookAlike">

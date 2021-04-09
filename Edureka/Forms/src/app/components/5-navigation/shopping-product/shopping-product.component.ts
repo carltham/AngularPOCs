@@ -16,18 +16,19 @@ import { ProductsService } from "src/app/services/5-navigation/shopping/product/
 export class ShoppingProductComponent implements OnInit {
   selectedObject: Product = this.productsService.getEmptyObject();
   selectedObjectId: number = 0;
+  selectedResponseId: number = -1;
   errorMessage: string = "";
   objectList: Product[] = [];
 
   constructor(
     private productsService: ProductsService,
     private navHandler: NavHandlerService,
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   showDetails(id: number) {
     this.navHandler.navigate([URL_PATH.ID.replace(":id", "" + id)], {
-      relativeTo: this.activatedRoute,
+      relativeTo: this.route,
     });
   }
 
@@ -42,6 +43,12 @@ export class ShoppingProductComponent implements OnInit {
   ngOnInit(): void {
     this.objectList = this.productsService.list();
     console.log("this.objectList = t", this.objectList);
+
+    this.route.paramMap.subscribe((dataMap) => {
+      let value = dataMap.get("id");
+      let id = value ? parseInt(value) : -1;
+      this.selectedResponseId = id;
+    });
   }
 
   get headers(): Header[] {

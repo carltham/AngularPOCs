@@ -18,8 +18,11 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductsService
   ) {}
+
   goBack() {
-    this.navHandler.toPrevious();
+    this.navHandler.navigate(["..", { id: this.product.id }], {
+      relativeTo: this.route,
+    });
   }
 
   ngOnInit(): void {

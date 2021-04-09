@@ -24,7 +24,7 @@ export class UserDetailsComponent implements OnInit {
     this.selectedUser = userService.getUser(-1);
   }
 
-  selectMe() {
+  goBack() {
     this.navHandler.navigate([URL_PATH.HOME, { id: this.selectedUserId }]);
   }
 
