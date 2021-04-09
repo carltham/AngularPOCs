@@ -41,6 +41,8 @@ import { ServersService } from "./services/in-class/servers.service";
 import { ServicesComponent } from "./components/4-services/services.component";
 import { ServicesHomeComponent } from "./components/4-services/services-home/services-home.component";
 import { UserDetailsComponent } from "./components/in-class/home/user-details/user-details.component";
+import { FormsComponent } from "./components/6-forms/forms.component";
+import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.component";
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { UserDetailsComponent } from "./components/in-class/home/user-details/us
     ServicesHomeComponent,
     InClassComponent,
     InClassHomeComponent,
+    FormsComponent,
+    FormsHomeComponent,
   ],
   imports: [
     BrowserModule,

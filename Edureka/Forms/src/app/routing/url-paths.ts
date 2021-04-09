@@ -10,6 +10,7 @@ export const URL_PATH = {
   PRODUCTS: "products",
   PRODUCTSID: "products/:id",
   CONTACT: "contact",
+  FORMS: "forms",
   INCLASS: "inclass-pocs",
   LOGIN: "login",
   LOGOUT: "logout",

@@ -20,6 +20,7 @@ export class AppComponent {
       text: "5. Navigation",
       options: "",
     },
+    { path: URL_PATH.FORMS, text: "4. Forms", options: "" },
     { path: URL_PATH.INCLASS, text: "In class & POCs", options: "" },
   ];
 

@@ -29,6 +29,8 @@ import { ServicesHomeComponent } from "../components/4-services/services-home/se
 import { InClassComponent } from "../components/in-class/in-class.component";
 import { InClassHomeComponent } from "../components/in-class/in-class-home/in-class-home.component";
 import { ProductDetailsComponent } from "../components/5-navigation/shopping-product/product-details/product-details.component";
+import { FormsHomeComponent } from "../components/6-forms/forms-home/forms-home.component";
+import { FormsComponent } from "../components/6-forms/forms.component";
 
 export const appRoutes: Routes = [
   {
@@ -103,7 +105,6 @@ export const appRoutes: Routes = [
       { path: URL_PATH.MYPAGE, component: MyPageComponent },
     ],
   },
-
   {
     path: URL_PATH.ROUTING,
     component: ShoppingComponent,
@@ -120,6 +121,21 @@ export const appRoutes: Routes = [
       {
         path: URL_PATH.CONTACT,
         component: ShoppingContactComponent,
+      },
+    ],
+  },
+  {
+    path: URL_PATH.FORMS,
+    component: FormsComponent,
+    children: [
+      {
+        path: URL_PATH.EMPTY,
+        redirectTo: URL_PATH.HOME,
+        pathMatch: "full",
+      },
+      {
+        path: URL_PATH.HOME,
+        component: FormsHomeComponent,
       },
     ],
   },
