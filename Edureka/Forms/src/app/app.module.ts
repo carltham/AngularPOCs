@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
 import { ErrorHandler, NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./routing/app-routing.module";
@@ -41,13 +41,15 @@ import { ServersService } from "./services/in-class/servers.service";
 import { ServicesComponent } from "./components/4-services/services.component";
 import { ServicesHomeComponent } from "./components/4-services/services-home/services-home.component";
 import { UserDetailsComponent } from "./components/in-class/home/user-details/user-details.component";
-import { FormsComponent } from "./components/6-forms/forms.component";
-import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.component";
+import { FormsComponent } from "./components/in-class/forms/forms.component";
+import { FormsHomeComponent } from "./components/in-class/forms/forms-home/forms-home.component";
+import { TemplateDrivenComponent } from "./components/in-class/forms/template-driven/template-driven.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     FakeEmplListComponent,
+    LoginComponent,
     rowDirective,
     InjectionComponent,
     HttpClientComponent,
@@ -62,7 +64,6 @@ import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.c
     ServerDetailsComponent,
     ServerEditorComponent,
     ServersListComponent,
-    LoginComponent,
     ShoppingHomeComponent,
     ShoppingProductComponent,
     ShoppingContactComponent,
@@ -74,6 +75,7 @@ import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.c
     InClassHomeComponent,
     FormsComponent,
     FormsHomeComponent,
+    TemplateDrivenComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.c
     FormsModule,
     HttpClientModule,
     CommonModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

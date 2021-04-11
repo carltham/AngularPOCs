@@ -13,7 +13,7 @@
         *ngFor="let employee of employees"
         [class.selected]="employee.id === selectedEmployee.id"
         rowDirective
-        >
+      >
         <td>
           <div *ngIf="employee.id !== selectedEmployee.id" style="width: 100%">
             <button (click)="edit(employee.id)">Edit</button>

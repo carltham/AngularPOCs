@@ -15,6 +15,7 @@ export const URL_PATH = {
   LOGIN: "login",
   LOGOUT: "logout",
   SERVERS: "servers",
+  TEMPLATEDRIVEN: "template-driven",
   ID: ":id",
   IDEDIT: ":id/edit",
 
