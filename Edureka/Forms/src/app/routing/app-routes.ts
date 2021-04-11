@@ -29,9 +29,14 @@ import { ServicesHomeComponent } from "../components/4-services/services-home/se
 import { InClassComponent } from "../components/in-class/in-class.component";
 import { InClassHomeComponent } from "../components/in-class/in-class-home/in-class-home.component";
 import { ProductDetailsComponent } from "../components/5-navigation/shopping-product/product-details/product-details.component";
-import { FormsHomeComponent } from "../components/in-class/forms/forms-home/forms-home.component";
-import { FormsComponent } from "../components/in-class/forms/forms.component";
-import { TemplateDrivenComponent } from "../components/in-class/forms/template-driven/template-driven.component";
+import { DemoFormsHomeComponent } from "../components/in-class/demo-forms/demo-forms-home/demo-forms-home.component";
+import { DemoFormsReactiveComponent } from "../components/in-class/demo-forms/demo-forms-reactive/demo-forms-reactive.component";
+import { DemoFormsComponent } from "../components/in-class/demo-forms/demo-forms.component";
+import { DemoFormsTemplateComponent } from "../components/in-class/demo-forms/demo-forms-template/demo-forms-template.component";
+import { FormsComponent } from "../components/6-forms/forms.component";
+import { FormsHomeComponent } from "../components/6-forms/forms-home/forms-home.component";
+import { TemplateFormsComponent } from "../components/6-forms/template-forms/template-forms.component";
+import { ReactiveFormsComponent } from "../components/6-forms/reactive-forms/reactive-forms.component";
 
 export const appRoutes: Routes = [
   {
@@ -62,6 +67,48 @@ export const appRoutes: Routes = [
       {
         path: URL_PATH.HTTPCLIENT,
         component: HttpClientComponent,
+      },
+    ],
+  },
+  {
+    path: URL_PATH.ROUTING,
+    component: ShoppingComponent,
+    children: [
+      {
+        path: URL_PATH.HOME,
+        component: ShoppingHomeComponent,
+      },
+      {
+        path: URL_PATH.PRODUCTS,
+        component: ShoppingProductComponent,
+      },
+      { path: URL_PATH.PRODUCTSID, component: ProductDetailsComponent },
+      {
+        path: URL_PATH.CONTACT,
+        component: ShoppingContactComponent,
+      },
+    ],
+  },
+  {
+    path: URL_PATH.FORMS,
+    component: FormsComponent,
+    children: [
+      {
+        path: URL_PATH.EMPTY,
+        redirectTo: URL_PATH.HOME,
+        pathMatch: "full",
+      },
+      {
+        path: URL_PATH.HOME,
+        component: FormsHomeComponent,
+      },
+      {
+        path: URL_PATH.FORMS_TEMPLATE,
+        component: TemplateFormsComponent,
+      },
+      {
+        path: URL_PATH.FORMS_REACTIVE,
+        component: ReactiveFormsComponent,
       },
     ],
   },
@@ -104,7 +151,7 @@ export const appRoutes: Routes = [
       },
       {
         path: URL_PATH.FORMS,
-        component: FormsComponent,
+        component: DemoFormsComponent,
         children: [
           {
             path: URL_PATH.EMPTY,
@@ -113,35 +160,20 @@ export const appRoutes: Routes = [
           },
           {
             path: URL_PATH.HOME,
-            component: FormsHomeComponent,
+            component: DemoFormsHomeComponent,
           },
           {
-            path: URL_PATH.TEMPLATEDRIVEN,
-            component: TemplateDrivenComponent,
+            path: URL_PATH.FORMS_TEMPLATE,
+            component: DemoFormsTemplateComponent,
+          },
+          {
+            path: URL_PATH.FORMS_REACTIVE,
+            component: DemoFormsReactiveComponent,
           },
         ],
       },
       { path: URL_PATH.MYPAGEID, component: MyPageComponent },
       { path: URL_PATH.MYPAGE, component: MyPageComponent },
-    ],
-  },
-  {
-    path: URL_PATH.ROUTING,
-    component: ShoppingComponent,
-    children: [
-      {
-        path: URL_PATH.HOME,
-        component: ShoppingHomeComponent,
-      },
-      {
-        path: URL_PATH.PRODUCTS,
-        component: ShoppingProductComponent,
-      },
-      { path: URL_PATH.PRODUCTSID, component: ProductDetailsComponent },
-      {
-        path: URL_PATH.CONTACT,
-        component: ShoppingContactComponent,
-      },
     ],
   },
   {

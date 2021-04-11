@@ -41,9 +41,14 @@ import { ServersService } from "./services/in-class/servers.service";
 import { ServicesComponent } from "./components/4-services/services.component";
 import { ServicesHomeComponent } from "./components/4-services/services-home/services-home.component";
 import { UserDetailsComponent } from "./components/in-class/home/user-details/user-details.component";
-import { FormsComponent } from "./components/in-class/forms/forms.component";
-import { FormsHomeComponent } from "./components/in-class/forms/forms-home/forms-home.component";
-import { TemplateDrivenComponent } from "./components/in-class/forms/template-driven/template-driven.component";
+import { DemoFormsComponent } from "./components/in-class/demo-forms/demo-forms.component";
+import { DemoFormsHomeComponent } from "./components/in-class/demo-forms/demo-forms-home/demo-forms-home.component";
+import { DemoFormsTemplateComponent } from "./components/in-class/demo-forms/demo-forms-template/demo-forms-template.component";
+import { DemoFormsReactiveComponent } from "./components/in-class/demo-forms/demo-forms-reactive/demo-forms-reactive.component";
+import { TemplateFormsComponent } from "./components/6-forms/template-forms/template-forms.component";
+import { FormsComponent } from "./components/6-forms/forms.component";
+import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.component";
+import { ReactiveFormsComponent } from "./components/6-forms/reactive-forms/reactive-forms.component";
 
 @NgModule({
   declarations: [
@@ -73,16 +78,21 @@ import { TemplateDrivenComponent } from "./components/in-class/forms/template-dr
     ServicesHomeComponent,
     InClassComponent,
     InClassHomeComponent,
+    DemoFormsComponent,
+    DemoFormsHomeComponent,
+    DemoFormsTemplateComponent,
+    DemoFormsReactiveComponent,
     FormsComponent,
     FormsHomeComponent,
-    TemplateDrivenComponent,
+    TemplateFormsComponent,
+    ReactiveFormsComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    CommonModule,
     FormsModule,
     HttpClientModule,
-    CommonModule,
     ReactiveFormsModule,
   ],
   providers: [

@@ -15,7 +15,8 @@ export const URL_PATH = {
   LOGIN: "login",
   LOGOUT: "logout",
   SERVERS: "servers",
-  TEMPLATEDRIVEN: "template-driven",
+  FORMS_TEMPLATE: "forms_template",
+  FORMS_REACTIVE: "forms_reactive",
   ID: ":id",
   IDEDIT: ":id/edit",
 
