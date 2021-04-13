@@ -1,40 +1,29 @@
 import { Component, OnInit } from "@angular/core";
 
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-reactive",
-  templateUrl: "./demo-forms-reactive.component.html",
-  styleUrls: ["./demo-forms-reactive.component.css"],
+  templateUrl: "./reactive-forms.component.html",
+  styleUrls: ["./reactive-forms.component.css"],
 })
-export class DemoFormsReactiveComponent implements OnInit {
+export class FormsReactiveComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   submitted = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      title: [""],
-      firstName: [""],
-      lastName: [""],
-      email: [""],
-      password: [""],
-      confirmPassword: [""],
-      acceptTerms: [false],
-    });
+  isValid(fieldName: string) {
+    let field = this.registerForm.get(fieldName);
+    return field && field.valid;
   }
-
-  // convenience getter for easy access to form fields
-  get f() {
-    return this.registerForm.controls;
-  }
-
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      console.log("this.registerForm.invalid = ", this.registerForm.invalid);
+
       return;
     }
 
@@ -47,5 +36,24 @@ export class DemoFormsReactiveComponent implements OnInit {
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
+  }
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      personal: this.formBuilder.group({
+        userName: [""],
+        fullName: ["", [Validators.required, Validators.minLength(4)]],
+      }),
+      contactDetails: this.formBuilder.group({
+        address: ["", [Validators.required, Validators.minLength(2)]],
+        city: [""],
+      }),
+      loginDetails: this.formBuilder.group({
+        email: [""],
+        password: ["", [Validators.required, Validators.minLength(4)]],
+        confirmPassword: [""],
+      }),
+      acceptTerms: [false, Validators.requiredTrue],
+    });
   }
 }

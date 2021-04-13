@@ -5,7 +5,7 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./template-forms.component.html",
   styleUrls: ["./template-forms.component.css"],
 })
-export class TemplateFormsComponent implements OnInit {
+export class FormsTemplateComponent implements OnInit {
   model: any = {};
   onSubmit() {
     alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.model, null, 4));

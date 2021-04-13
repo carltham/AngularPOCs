@@ -45,10 +45,10 @@ import { DemoFormsComponent } from "./components/in-class/demo-forms/demo-forms.
 import { DemoFormsHomeComponent } from "./components/in-class/demo-forms/demo-forms-home/demo-forms-home.component";
 import { DemoFormsTemplateComponent } from "./components/in-class/demo-forms/demo-forms-template/demo-forms-template.component";
 import { DemoFormsReactiveComponent } from "./components/in-class/demo-forms/demo-forms-reactive/demo-forms-reactive.component";
-import { TemplateFormsComponent } from "./components/6-forms/template-forms/template-forms.component";
 import { FormsComponent } from "./components/6-forms/forms.component";
 import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.component";
-import { ReactiveFormsComponent } from "./components/6-forms/reactive-forms/reactive-forms.component";
+import { FormsTemplateComponent } from "./components/6-forms/template-forms/template-forms.component";
+import { FormsReactiveComponent } from "./components/6-forms/reactive-forms/reactive-forms.component";
 
 @NgModule({
   declarations: [
@@ -84,8 +84,8 @@ import { ReactiveFormsComponent } from "./components/6-forms/reactive-forms/reac
     DemoFormsReactiveComponent,
     FormsComponent,
     FormsHomeComponent,
-    TemplateFormsComponent,
-    ReactiveFormsComponent,
+    FormsTemplateComponent,
+    FormsReactiveComponent,
   ],
   imports: [
     AppRoutingModule,

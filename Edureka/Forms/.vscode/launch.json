@@ -25,6 +25,18 @@
             "type": "node-terminal"
         },
         {
+            "command": "npm run backend",
+            "name": "Run backend",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "npm run frontend",
+            "name": "Run frontend",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
             "command": "npm test",
             "name": "Run npm test",
             "request": "launch",

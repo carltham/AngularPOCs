@@ -35,8 +35,8 @@ import { DemoFormsComponent } from "../components/in-class/demo-forms/demo-forms
 import { DemoFormsTemplateComponent } from "../components/in-class/demo-forms/demo-forms-template/demo-forms-template.component";
 import { FormsComponent } from "../components/6-forms/forms.component";
 import { FormsHomeComponent } from "../components/6-forms/forms-home/forms-home.component";
-import { TemplateFormsComponent } from "../components/6-forms/template-forms/template-forms.component";
-import { ReactiveFormsComponent } from "../components/6-forms/reactive-forms/reactive-forms.component";
+import { FormsTemplateComponent } from "../components/6-forms/template-forms/template-forms.component";
+import { FormsReactiveComponent } from "../components/6-forms/reactive-forms/reactive-forms.component";
 
 export const appRoutes: Routes = [
   {
@@ -104,11 +104,11 @@ export const appRoutes: Routes = [
       },
       {
         path: URL_PATH.FORMS_TEMPLATE,
-        component: TemplateFormsComponent,
+        component: FormsTemplateComponent,
       },
       {
         path: URL_PATH.FORMS_REACTIVE,
-        component: ReactiveFormsComponent,
+        component: FormsReactiveComponent,
       },
     ],
   },
