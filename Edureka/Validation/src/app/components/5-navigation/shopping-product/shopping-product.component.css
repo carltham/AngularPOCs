@@ -1,0 +1,9 @@
+#products-table {
+  text-align: left;
+}
+#products-table > tbody > tr > td:nth-child(1) {
+  text-align: center;
+}
+#products-table > tbody > tr > td:nth-child(3) {
+  text-align: right;
+}

@@ -1,0 +1,55 @@
+<div class="container">
+  <header>
+    <h1>{{ product.name }}</h1>
+  </header>
+  <div class="wrapper clearfix">
+    <section>
+      <table>
+        <tr>
+          <td>
+            <p>
+              Name :<br />
+              {{ product.name }}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              Description :<br />
+              {{ product.description }}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              Details :<br />
+              {{ product.details }}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h2 class="warning">
+              Price :<br />
+              {{ product.price | currency: "SEK  " }}
+            </h2>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+    </section>
+    <aside><img [src]="product.imageUrl" [alt]="product.name" /></aside>
+  </div>
+  <footer>
+    <span class="linkLookAlike" (click)="goBack()">Go To Products List</span>
+  </footer>
+</div>

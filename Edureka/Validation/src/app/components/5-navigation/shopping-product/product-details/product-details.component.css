@@ -1,0 +1,50 @@
+body {
+  font: 14px Arial, sans-serif;
+  margin: 0px;
+}
+header {
+  padding: 10px 20px;
+  background: #acb3b9;
+  text-align: center;
+}
+header h1 {
+  font-size: 24px;
+}
+.container {
+  width: 100%;
+  background: #ffffff;
+}
+aside,
+section {
+  float: left;
+  padding: 20px;
+  min-height: 170px;
+  box-sizing: border-box;
+}
+aside {
+  width: 50%;
+}
+section {
+  width: 50%;
+  background: #d4d7dc;
+  bottom: -100px;
+}
+section table {
+  width: 75%;
+  height: 400px;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+footer {
+  background: #acb3b9;
+  text-align: center;
+  padding: 5px;
+}
+.warning {
+  color: orangered;
+}
