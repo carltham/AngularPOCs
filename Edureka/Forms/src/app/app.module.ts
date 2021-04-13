@@ -91,8 +91,8 @@ import { FormsReactiveComponent } from "./components/6-forms/reactive-forms/reac
     AppRoutingModule,
     BrowserModule,
     CommonModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
   ],
   providers: [

@@ -1,22 +1,27 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { FormsModule } from "@angular/forms";
 
-import { TemplateFormsComponent } from "./template-forms.component";
+import { FormsTemplateComponent } from "./template-forms.component";
 
-describe("TemplateFormsComponent", () => {
-  let component: TemplateFormsComponent;
-  let fixture: ComponentFixture<TemplateFormsComponent>;
+describe("FormsTemplateComponent", () => {
+  let component: FormsTemplateComponent;
+  let fixture: ComponentFixture<FormsTemplateComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [TemplateFormsComponent],
-    }).compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TemplateFormsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [FormsModule],
+        declarations: [FormsTemplateComponent],
+        providers: [],
+      })
+        .compileComponents()
+        .then(() => {
+          fixture = TestBed.createComponent(FormsTemplateComponent);
+          component = fixture.componentInstance;
+          fixture.autoDetectChanges();
+        });
+    })
+  );
 
   it("should create", () => {
     expect(component).toBeTruthy();

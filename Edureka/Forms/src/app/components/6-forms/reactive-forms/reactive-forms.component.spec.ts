@@ -1,25 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { ReactiveFormsComponent } from './reactive-forms.component';
+import { FormsReactiveComponent } from "./reactive-forms.component";
 
-describe('ReactiveFormsComponent', () => {
-  let component: ReactiveFormsComponent;
-  let fixture: ComponentFixture<ReactiveFormsComponent>;
+describe("FormsReactiveComponent", () => {
+  let component: FormsReactiveComponent;
+  let fixture: ComponentFixture<FormsReactiveComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ReactiveFormsComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [ReactiveFormsModule],
+        declarations: [FormsReactiveComponent],
+        providers: [],
+      })
+        .compileComponents()
+        .then(() => {
+          fixture = TestBed.createComponent(FormsReactiveComponent);
+          component = fixture.componentInstance;
+          fixture.autoDetectChanges();
+        });
     })
-    .compileComponents();
-  });
+  );
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ReactiveFormsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
