@@ -49,6 +49,15 @@ import { FormsComponent } from "./components/6-forms/forms.component";
 import { FormsHomeComponent } from "./components/6-forms/forms-home/forms-home.component";
 import { FormsTemplateComponent } from "./components/6-forms/template-forms/template-forms.component";
 import { FormsReactiveComponent } from "./components/6-forms/reactive-forms/reactive-forms.component";
+import { DemoValidationComponent } from "./components/in-class/demo-validation/demo-validation.component";
+import { DemoValidationHomeComponent } from "./components/in-class/demo-validation/demo-validation-home/demo-validation-home.component";
+import { DemoValidationTemplateComponent } from "./components/in-class/demo-validation/demo-validation-template/demo-validation-template.component";
+import { DemoValidationReactiveComponent } from "./components/in-class/demo-validation/demo-validation-reactive/demo-validation-reactive.component";
+import { ValidationComponent } from "./components/7-validation/validation.component";
+import { ValidationHomeComponent } from "./components/7-validation/validation-home/validation-home.component";
+import { ValidationTemplateComponent } from "./components/7-validation/template-validation/template-validation.component";
+import { ValidationReactiveComponent } from "./components/7-validation/reactive-validation/reactive-validation.component";
+import { MustMatchDirective } from "./components/in-class/demo-validation/_helpers/must-match.directive";
 
 @NgModule({
   declarations: [
@@ -82,10 +91,19 @@ import { FormsReactiveComponent } from "./components/6-forms/reactive-forms/reac
     DemoFormsHomeComponent,
     DemoFormsTemplateComponent,
     DemoFormsReactiveComponent,
+    DemoValidationComponent,
+    DemoValidationHomeComponent,
+    DemoValidationTemplateComponent,
+    DemoValidationReactiveComponent,
     FormsComponent,
     FormsHomeComponent,
     FormsTemplateComponent,
     FormsReactiveComponent,
+    ValidationComponent,
+    ValidationHomeComponent,
+    ValidationTemplateComponent,
+    ValidationReactiveComponent,
+    MustMatchDirective,
   ],
   imports: [
     AppRoutingModule,

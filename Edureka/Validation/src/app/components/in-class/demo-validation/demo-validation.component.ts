@@ -4,10 +4,10 @@ import { URL_PATH } from "src/app/routing/url-paths";
 
 @Component({
   selector: "app-forms",
-  templateUrl: "./forms.component.html",
-  styleUrls: ["./forms.component.css"],
+  templateUrl: "./demo-validation.component.html",
+  styleUrls: ["./demo-validation.component.css"],
 })
-export class FormsComponent implements OnInit {
+export class DemoValidationComponent implements OnInit {
   routes: Route[] = [
     { path: URL_PATH.HOME, text: "Home", options: "" },
     { path: URL_PATH.BY_TEMPLATE, text: "By Template", options: "" },

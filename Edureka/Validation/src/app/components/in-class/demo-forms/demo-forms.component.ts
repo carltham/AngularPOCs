@@ -10,8 +10,8 @@ import { URL_PATH } from "src/app/routing/url-paths";
 export class DemoFormsComponent implements OnInit {
   routes: Route[] = [
     { path: URL_PATH.HOME, text: "Home", options: "" },
-    { path: URL_PATH.FORMS_TEMPLATE, text: "By Template", options: "" },
-    { path: URL_PATH.FORMS_REACTIVE, text: "By Reactive", options: "" },
+    { path: URL_PATH.BY_TEMPLATE, text: "By Template", options: "" },
+    { path: URL_PATH.BY_REACTIVE, text: "By Reactive", options: "" },
   ];
 
   constructor() {}

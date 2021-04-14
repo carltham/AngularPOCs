@@ -13,6 +13,7 @@ export class InClassComponent implements OnInit {
     { path: URL_PATH.BLOGS, text: "Blogs", options: "" },
     { path: URL_PATH.SERVERS, text: "Servers", options: "" },
     { path: URL_PATH.FORMS, text: "Forms", options: "" },
+    { path: URL_PATH.VALIDATION, text: "Validation", options: "" },
     { path: URL_PATH.MYPAGE, text: "My Page", options: "" },
   ];
   constructor() {}

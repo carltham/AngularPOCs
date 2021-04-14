@@ -147,6 +147,19 @@ nav > ul > li > a {
 .online {
   color: greenyellow;
 }
+
+.ng-pristine {
+  color: darkblue;
+}
+
+.ng-invalid {
+  color: darkred;
+}
+
+.ng-valid {
+  color: darkgreen;
+}
+
 .offline,
 .error {
   color: red;

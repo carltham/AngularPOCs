@@ -37,11 +37,19 @@ import { FormsComponent } from "../components/6-forms/forms.component";
 import { FormsHomeComponent } from "../components/6-forms/forms-home/forms-home.component";
 import { FormsTemplateComponent } from "../components/6-forms/template-forms/template-forms.component";
 import { FormsReactiveComponent } from "../components/6-forms/reactive-forms/reactive-forms.component";
+import { DemoValidationComponent } from "../components/in-class/demo-validation/demo-validation.component";
+import { DemoValidationHomeComponent } from "../components/in-class/demo-validation/demo-validation-home/demo-validation-home.component";
+import { DemoValidationTemplateComponent } from "../components/in-class/demo-validation/demo-validation-template/demo-validation-template.component";
+import { DemoValidationReactiveComponent } from "../components/in-class/demo-validation/demo-validation-reactive/demo-validation-reactive.component";
+import { ValidationComponent } from "../components/7-validation/validation.component";
+import { ValidationHomeComponent } from "../components/7-validation/validation-home/validation-home.component";
+import { ValidationTemplateComponent } from "../components/7-validation/template-validation/template-validation.component";
+import { ValidationReactiveComponent } from "../components/7-validation/reactive-validation/reactive-validation.component";
 
 export const appRoutes: Routes = [
   {
     path: URL_PATH.EMPTY,
-    redirectTo: URL_PATH.HOME,
+    redirectTo: URL_PATH.INCLASS + "/" + URL_PATH.VALIDATION,
     pathMatch: "full",
   },
   { path: URL_PATH.HOME, component: HomeComponent },
@@ -103,12 +111,35 @@ export const appRoutes: Routes = [
         component: FormsHomeComponent,
       },
       {
-        path: URL_PATH.FORMS_TEMPLATE,
+        path: URL_PATH.BY_TEMPLATE,
         component: FormsTemplateComponent,
       },
       {
-        path: URL_PATH.FORMS_REACTIVE,
+        path: URL_PATH.BY_REACTIVE,
         component: FormsReactiveComponent,
+      },
+    ],
+  },
+  {
+    path: URL_PATH.VALIDATION,
+    component: ValidationComponent,
+    children: [
+      {
+        path: URL_PATH.EMPTY,
+        redirectTo: URL_PATH.HOME,
+        pathMatch: "full",
+      },
+      {
+        path: URL_PATH.HOME,
+        component: ValidationHomeComponent,
+      },
+      {
+        path: URL_PATH.BY_TEMPLATE,
+        component: ValidationTemplateComponent,
+      },
+      {
+        path: URL_PATH.BY_REACTIVE,
+        component: ValidationReactiveComponent,
       },
     ],
   },
@@ -163,12 +194,35 @@ export const appRoutes: Routes = [
             component: DemoFormsHomeComponent,
           },
           {
-            path: URL_PATH.FORMS_TEMPLATE,
+            path: URL_PATH.BY_TEMPLATE,
             component: DemoFormsTemplateComponent,
           },
           {
-            path: URL_PATH.FORMS_REACTIVE,
+            path: URL_PATH.BY_REACTIVE,
             component: DemoFormsReactiveComponent,
+          },
+        ],
+      },
+      {
+        path: URL_PATH.VALIDATION,
+        component: DemoValidationComponent,
+        children: [
+          {
+            path: URL_PATH.EMPTY,
+            redirectTo: URL_PATH.HOME,
+            pathMatch: "full",
+          },
+          {
+            path: URL_PATH.HOME,
+            component: DemoValidationHomeComponent,
+          },
+          {
+            path: URL_PATH.BY_TEMPLATE,
+            component: DemoValidationTemplateComponent,
+          },
+          {
+            path: URL_PATH.BY_REACTIVE,
+            component: DemoValidationReactiveComponent,
           },
         ],
       },
