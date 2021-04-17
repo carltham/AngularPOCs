@@ -1,0 +1,21 @@
+<div class="dialog">
+  <h2 class="centered">Maintainance of employees and other services !!</h2>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <nav>
+      <ul>
+        <li
+          *ngFor="let route of routes"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="route.options"
+        >
+          <a [routerLink]="route.path">{{ route.text }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="panel rounded">
+  <router-outlet></router-outlet>
+</div>

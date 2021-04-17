@@ -1,0 +1,67 @@
+<div class="panel rounded centeredText">
+  <div class="content">
+    <div class="dialog">
+      <div
+        class="width50p centered"
+        *ngIf="selectedUser.id >= 0 && isAuthenticated() === false"
+      >
+        Welcome user {{ selectedUser.fullName }}, please login (
+        {{ selectedUser.userName }} )!
+        <div class="panel rounded centeredText">
+          <table>
+            <tbody>
+              <tr>
+                <td>username:</td>
+                <td>
+                  <input
+                    id="userName"
+                    type="text"
+                    placeholder="Type your username"
+                    [(ngModel)]="userName"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>password:</td>
+                <td>
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Type your password"
+                    [(ngModel)]="password"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Login:</td>
+                <td>
+                  <button (click)="doLogin()">click here</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="width50p centered" *ngIf="isAuthenticated() === true">
+        You are logged in !!
+      </div>
+      <div
+        class="width50p centered"
+        *ngIf="isAuthenticated() === false && selectedUser.id < 0"
+      >
+        Select a user to login !! ( To reach secured areas )
+        <ul>
+          <li
+            class="listButton"
+            [class.selected]="hasControlledUserDetails(user.id)"
+            *ngFor="let user of knownUsers"
+          >
+            <label (click)="selectUser(user.id)" class="linkLookAlike">
+              {{ user.fullName }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

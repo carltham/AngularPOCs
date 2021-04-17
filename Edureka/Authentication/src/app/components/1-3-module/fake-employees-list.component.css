@@ -1,0 +1,12 @@
+table {
+  overflow: hidden;
+}
+
+td,
+th {
+  position: relative;
+}
+
+td input {
+  width: 100%;
+}

@@ -1,0 +1,178 @@
+/* You can add global styles to this file, and also import other style files */
+.center {
+  position: relative;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* panel rounded width50p center dialog */
+.dialog {
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: #fff;
+  box-shadow: 10px 5px grey;
+}
+.dialog,
+.bordered {
+  border-width: 10px;
+  border-style: groove;
+  border-color: lightyellow;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.dialog > ul > li {
+  width: 100%;
+}
+
+.content {
+  position: relative;
+  float: left;
+
+  width: 100%;
+  background-color: #fff;
+}
+.dialog:hover {
+  border-color: yellow;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.mainwidow {
+  float: right;
+  height: 800px;
+  width: 100%;
+  padding: 3px;
+}
+.mainwidow > div {
+  height: 799px;
+  overflow: auto;
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+.centeredText {
+  text-align: center;
+}
+
+button {
+  min-width: 50px;
+}
+.error {
+  background-color: beige;
+  color: lightcoral;
+}
+
+label {
+  padding: 10px;
+}
+
+.linkLookAlike {
+  color: #337ab7;
+}
+
+.linkLookAlike:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
+
+.listButton {
+  margin: 2px;
+  border-style: double;
+  border-color: #dddddd;
+  border-radius: 10px;
+}
+
+nav > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav > ul > li {
+  float: left;
+}
+
+nav > ul > li {
+  display: block;
+  margin: 2px;
+  background-color: #dddddd;
+  border-style: outset;
+  border-radius: 10px;
+}
+
+nav > ul > li:hover {
+  background-color: lightgoldenrodyellow;
+  border-style: outset;
+}
+
+nav > ul > li:active {
+  background-color: orange;
+  border-style: inset;
+}
+nav > ul > li.active {
+  background-color: lightgoldenrodyellow;
+  border-style: inset;
+}
+
+nav > ul > li > a {
+  width: 160px;
+  text-align: center;
+  display: block;
+  padding: 8px;
+  border-style: outset;
+  border-radius: 10px;
+}
+
+.online {
+  color: greenyellow;
+}
+
+.ng-pristine {
+  color: darkblue;
+}
+
+.ng-invalid {
+  color: darkred;
+}
+
+.ng-valid {
+  color: darkgreen !important;
+}
+
+.offline,
+.error {
+  color: red;
+}
+
+.selected {
+  background-color: beige;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.width50p {
+  width: 50%;
+}

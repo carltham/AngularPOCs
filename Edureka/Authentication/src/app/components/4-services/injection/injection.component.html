@@ -1,0 +1,40 @@
+<div class="panel rounded">
+  <div *ngIf="!newEmployee.id || newEmployee.id < 0">
+    <button (click)="fetchNew()">New Employee</button>
+  </div>
+  <div *ngIf="newEmployee.id >= 0">
+    <button (click)="update()">Update</button>
+    <button (click)="cancelUpdate()">Cancel</button>
+  </div>
+  <div class="panel rounded" *ngIf="newEmployee.id >= 0">
+    <table id="newEmployee">
+      <thead>
+        <tr>
+          <td *ngFor="let header of headers" style="width:{{ header.width }}%">
+            <label>{{ header.text }}</label>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <label>{{ newEmployee.id }}</label>
+          </td>
+          <td>
+            <input id="name" [(ngModel)]="newEmployee.employee_name" />
+          </td>
+
+          <td>
+            <input id="salary" [(ngModel)]="newEmployee.employee_salary" />
+          </td>
+          <td>
+            <input id="age" [(ngModel)]="newEmployee.employee_age" />
+          </td>
+          <td>
+            <input id="image" [(ngModel)]="newEmployee.profile_image" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

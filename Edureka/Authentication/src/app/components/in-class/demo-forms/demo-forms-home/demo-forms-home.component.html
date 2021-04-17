@@ -1,0 +1,42 @@
+<p>forms-home works!</p>
+<form #f="ngForm">
+  <div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar" />
+  </div>
+
+  <div class="container">
+    <label for="userName"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="userName" required />
+
+    <div ngModelGroup="passwords">
+      <label for="password"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        ngModel
+      />
+      <label for="pconfirm"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password again"
+        name="pconfirm"
+        ngModel
+      />
+    </div>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" /> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color: #f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+<pre>Password : {{ f.value.passwords ? f.value.passwords.password : "" }}</pre>
+<pre>
+Confirmation : {{ f.value.passwords ? f.value.passwords.pconfirm : "" }}</pre
+>
