@@ -49,7 +49,7 @@ import { ValidationReactiveComponent } from "../components/7-validation/reactive
 export const appRoutes: Routes = [
   {
     path: URL_PATH.EMPTY,
-    redirectTo: URL_PATH.INCLASS + "/" + URL_PATH.VALIDATION,
+    redirectTo: URL_PATH.VALIDATION + "/" + URL_PATH.BY_REACTIVE,
     pathMatch: "full",
   },
   { path: URL_PATH.HOME, component: HomeComponent },

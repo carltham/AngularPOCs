@@ -1,21 +1,16 @@
-import {
-  asNativeElements,
-  Directive,
-  ElementRef,
-  HostListener,
-} from '@angular/core';
+import { Directive, ElementRef, HostListener } from "@angular/core";
 
 @Directive({
-  selector: '[rowDirective]',
+  selector: "[rowDirective]",
 })
 export class rowDirective {
-  oldBackgroundColor = '';
+  oldBackgroundColor = "";
   constructor(private elememtRef: ElementRef) {}
-  @HostListener('mouseenter') onMouseEnter() {
+  @HostListener("mouseenter") onMouseEnter() {
     this.oldBackgroundColor = this.elememtRef.nativeElement.style.backgroundColor;
-    this.elememtRef.nativeElement.style.backgroundColor = '#ffffaa';
+    this.elememtRef.nativeElement.style.backgroundColor = "#ffffaa";
   }
-  @HostListener('mouseleave') onMouseLeave() {
+  @HostListener("mouseleave") onMouseLeave() {
     let incomingBackgroundColor = this.elememtRef.nativeElement.style
       .backgroundColor;
     this.elememtRef.nativeElement.style.backgroundColor = this.oldBackgroundColor;

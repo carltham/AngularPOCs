@@ -6,7 +6,7 @@
         "clean": "rm node_modules -R; cd tserver; rm node_modules -R;",
         "setup": "npm install; cd tserver; npm install;",
         "backend": "cd tserver; npm run dev",
-        "frontend": "ng serve --host 0.0.0.0 --watch",
+        "frontend": "ng serve --host 0.0.0.0 --watch --poll",
         "start": "echo :: run npm run backend :: or :: npm run frontend ::",
         "build": "ng build",
         "test": "ng test",

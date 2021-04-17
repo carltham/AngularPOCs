@@ -4,70 +4,115 @@
     <h5 class="card-header">Angular 8 Template-Driven Form</h5>
     <div class="card-body">
       <form
-        #f="ngForm"
+        #form="ngForm"
         name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
+        (ngSubmit)="form.valid && onSubmit()"
         novalidate
       >
         <div class="form-row">
           <div class="form-group col-5">
-            <label>Full Name</label>
+            <label [ngClass]="{ 'ng-valid': fullName.valid }">Full Name</label>
             <input
               type="text"
               name="fullName"
               class="form-control"
               [(ngModel)]="model.fullName"
               #fullName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && fullName.invalid }"
+              required
             />
+            <div
+              class="error"
+              *ngIf="fullName.pristine || fullName.errors?.required"
+            >
+              Field is reqired !
+            </div>
           </div>
         </div>
         <div class="form-group">
-          <label>Email</label>
+          <label [ngClass]="{ 'ng-valid': email.valid }">Email</label>
           <input
             type="text"
             name="email"
             class="form-control"
             [(ngModel)]="model.email"
             #email="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+            required
+            email
           />
+          <div class="error" *ngIf="email.pristine || email.errors?.required">
+            Field is reqired !
+          </div>
+          <div class="error" *ngIf="email.errors?.email">
+            Email format must follow standard, like 'tttt@tttt.tt' !
+          </div>
         </div>
         <div class="form-group col-5">
-          <label>Phone nr</label>
+          <label [ngClass]="{ 'ng-valid': phone.valid }">Phone nr</label>
           <input
             type="text"
             name="phone"
             class="form-control"
             [(ngModel)]="model.phone"
             #phone="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+            required
+            pattern="^!*([0-9]!*){10,}$"
           />
+          <div class="error" *ngIf="phone.pristine || phone.errors?.required">
+            Field is reqired !
+          </div>
+          <div class="error" *ngIf="phone.errors?.pattern">
+            Only numerics please, and minimum 10 digits!
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group col">
-            <label>Password</label>
+            <label [ngClass]="{ 'ng-valid': password.valid }">Password</label>
             <input
               type="password"
               name="password"
               class="form-control"
               [(ngModel)]="model.password"
               #password="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+              required
             />
+            <div
+              class="error"
+              *ngIf="password.pristine || password.errors?.required"
+            >
+              Field is reqired !
+            </div>
           </div>
           <div class="form-group col">
-            <label>Confirm Password</label>
+            <label [ngClass]="{ 'ng-valid': confirmPassword.valid }"
+              >Confirm Password</label
+            >
             <input
               type="password"
+              id="confirmPassword"
               name="confirmPassword"
               class="form-control"
               [(ngModel)]="model.confirmPassword"
               #confirmPassword="ngModel"
-              [ngClass]="{
-                'is-invalid': f.submitted && confirmPassword.invalid
-              }"
+              required
+              validateEqual="password"
             />
+            <div
+              class="error"
+              *ngIf="
+                confirmPassword.pristine || confirmPassword.errors?.required
+              "
+            >
+              Field is reqired !
+            </div>
+            <div
+              class="error"
+              *ngIf="
+                confirmPassword.pristine ||
+                confirmPassword.errors?.validateEqual
+              "
+            >
+              Password mismatch !
+            </div>
           </div>
         </div>
         <div class="form-group form-check">
@@ -78,26 +123,31 @@
             class="form-check-input"
             [(ngModel)]="model.acceptTerms"
             #acceptTerms="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && acceptTerms.invalid }"
+            required
           />
-          <label for="acceptTerms" class="form-check-label"
-            >Accept Terms & Conditions</label
-          >
           <div
-            *ngIf="f.submitted && acceptTerms.invalid"
-            class="invalid-feedback"
+            class="error"
+            *ngIf="acceptTerms.pristine || acceptTerms.errors?.required"
           >
             Accept Ts & Cs is required
           </div>
+          <label
+            [ngClass]="{ 'ng-valid': acceptTerms.valid }"
+            for="acceptTerms"
+            class="form-check-label"
+            >Accept Terms & Conditions</label
+          >
         </div>
         <div class="text-center">
           <!-- <button
             class="btn btn-primary mr-1"
             [disabled]="!ngForm || !ngForm.valid"
-          >
+          > 
             Register
           </button> -->
-          <button class="btn btn-primary mr-1">Register</button>
+          <button class="btn btn-primary mr-1" [disabled]="!form.valid">
+            Register
+          </button>
           <button class="btn btn-secondary" type="reset">Clear</button>
         </div>
       </form>

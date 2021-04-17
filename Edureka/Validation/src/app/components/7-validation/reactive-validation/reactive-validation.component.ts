@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  ConfirmEqualValidatorDirective,
+  LocalEqualValidator,
+} from "src/app/directives/confirm-equal-validator.directive";
+import { Constants } from "src/app/support/constants";
 
 @Component({
   selector: "app-reactive",
@@ -13,9 +18,37 @@ export class ValidationReactiveComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  isValid(fieldName: string) {
+  isVisible(componentName: string) {
+    let field = this.registerForm.get(componentName);
+    return field && field;
+  }
+  isValid(fieldName: string, expectedError: string = "") {
+    if (expectedError === "min") {
+      expectedError = "minlength";
+    }
     let field = this.registerForm.get(fieldName);
-    return field && field.valid;
+    let hasExpectedError = field?.getError(expectedError);
+    let errors = field?.errors;
+    let result = hasExpectedError
+      ? false
+      : expectedError !== ""
+      ? true
+      : field?.valid;
+    if (fieldName === "contactDetails.telephone" && expectedError === "") {
+      console.log("fieldName = ", fieldName);
+      console.log("errors = ", errors);
+      console.log(
+        "expectedError, hasExpectedError = ",
+        expectedError,
+        hasExpectedError
+      );
+      console.log("field?.valid) = ", field?.valid);
+      console.log("field, result = ", field, result);
+    }
+    return result;
+  }
+  isInValid(fieldName: string, expectedError: string = "") {
+    return !this.isValid(fieldName, expectedError);
   }
   onSubmit() {
     this.submitted = true;
@@ -23,7 +56,6 @@ export class ValidationReactiveComponent implements OnInit {
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       console.log("this.registerForm.invalid = ", this.registerForm.invalid);
-
       return;
     }
 
@@ -41,17 +73,31 @@ export class ValidationReactiveComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       personal: this.formBuilder.group({
-        userName: [""],
+        userName: ["", Validators.required],
         fullName: ["", [Validators.required, Validators.minLength(4)]],
       }),
       contactDetails: this.formBuilder.group({
         address: ["", [Validators.required, Validators.minLength(2)]],
-        city: [""],
+        telephone: [
+          "",
+          [
+            Validators.required,
+            Validators.minLength(10),
+            Validators.pattern(Constants.PATTERNS.NUMERIC),
+          ],
+        ],
+        city: ["", Validators.required],
       }),
       loginDetails: this.formBuilder.group({
-        email: [""],
+        email: ["", [Validators.required, Validators.email]],
         password: ["", [Validators.required, Validators.minLength(4)]],
-        confirmPassword: [""],
+        confirmPassword: [
+          "",
+          [
+            Validators.required,
+            new LocalEqualValidator("loginDetails.password"),
+          ],
+        ],
       }),
       acceptTerms: [false, Validators.requiredTrue],
     });

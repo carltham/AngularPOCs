@@ -157,7 +157,7 @@ nav > ul > li > a {
 }
 
 .ng-valid {
-  color: darkgreen;
+  color: darkgreen !important;
 }
 
 .offline,

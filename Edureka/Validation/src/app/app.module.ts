@@ -58,6 +58,7 @@ import { ValidationHomeComponent } from "./components/7-validation/validation-ho
 import { ValidationTemplateComponent } from "./components/7-validation/template-validation/template-validation.component";
 import { ValidationReactiveComponent } from "./components/7-validation/reactive-validation/reactive-validation.component";
 import { MustMatchDirective } from "./components/in-class/demo-validation/_helpers/must-match.directive";
+import { ConfirmEqualValidatorDirective } from './directives/confirm-equal-validator.directive';
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { MustMatchDirective } from "./components/in-class/demo-validation/_helpe
     ValidationTemplateComponent,
     ValidationReactiveComponent,
     MustMatchDirective,
+    ConfirmEqualValidatorDirective,
   ],
   imports: [
     AppRoutingModule,

@@ -42,7 +42,6 @@ export class ShoppingProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.objectList = this.productsService.list();
-    console.log("this.objectList = t", this.objectList);
 
     this.route.paramMap.subscribe((dataMap) => {
       let value = dataMap.get("id");

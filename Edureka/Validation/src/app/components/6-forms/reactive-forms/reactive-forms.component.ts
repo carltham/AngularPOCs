@@ -23,7 +23,6 @@ export class FormsReactiveComponent implements OnInit {
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       console.log("this.registerForm.invalid = ", this.registerForm.invalid);
-
       return;
     }
 
