@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Data, ParamMap } from "@angular/router";
-import { Server } from "src/app/domain/in-class/server";
-import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
-import { ServersService } from "src/app/services/in-class/servers.service";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+import { Server } from "../../domain/in-class/server";
+import { NavHandlerService } from "../../services/5-navigation/nav-handler.service";
+import { ServersService } from "../services/servers.service";
 
 @Component({
   selector: "app-server",

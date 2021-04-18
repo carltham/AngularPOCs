@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { User } from "src/app/domain/8-Authentication/user";
-import { URL_PATH } from "src/app/routing/url-paths";
-import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
-import { AuthService } from "src/app/services/8-Authentication/auth.service";
-import { UserService } from "src/app/services/8-Authentication/user.service";
+import { User } from "../../domain/8-Authentication/user";
+import { URL_PATH } from "../../routing/url-paths";
+import { NavHandlerService } from "../../services/5-navigation/nav-handler.service";
+import { UserService } from "../../services/8-Authentication/user.service";
+import { AuthService } from "../../services/8-Authentication/auth.service";
 
 @Component({
   selector: "app-login",

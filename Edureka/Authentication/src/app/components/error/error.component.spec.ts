@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { AppRoutingModule } from "src/app/routing/app-routing.module";
-import { ServersService } from "src/app/services/in-class/servers.service";
-
+import { RouterTestingModule } from "@angular/router/testing";
 import { ErrorComponent } from "./error.component";
+import { ServersService } from "../../in-class-pocs/services/servers.service";
 
 describe("ErrorComponent", () => {
   let component: ErrorComponent;
@@ -10,7 +9,7 @@ describe("ErrorComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppRoutingModule],
+      imports: [RouterTestingModule],
       declarations: [],
       providers: [ServersService],
     })

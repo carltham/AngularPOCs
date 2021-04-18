@@ -3,7 +3,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-
 import { AppComponent } from "./app.component";
 import { FakeEmplListComponent } from "./components/1-3-module/fake-employees-list.component";
 import { HttpClientComponent } from "./components/4-services/http-client/http-client.component";
@@ -24,28 +23,6 @@ import { ValidationTemplateComponent } from "./components/7-validation/template-
 import { ValidationHomeComponent } from "./components/7-validation/validation-home/validation-home.component";
 import { ValidationComponent } from "./components/7-validation/validation.component";
 import { ErrorComponent } from "./components/error/error.component";
-import { BlogComponent } from "./components/in-class/blog/blog.component";
-import { NewBlogComponent } from "./components/in-class/blog/new-blog/new-blog.component";
-import { OtherBlogComponent } from "./components/in-class/blog/other-blog/other-blog.component";
-import { DemoFormsHomeComponent } from "./components/in-class/demo-forms/demo-forms-home/demo-forms-home.component";
-import { DemoFormsReactiveComponent } from "./components/in-class/demo-forms/demo-forms-reactive/demo-forms-reactive.component";
-import { DemoFormsTemplateComponent } from "./components/in-class/demo-forms/demo-forms-template/demo-forms-template.component";
-import { DemoFormsComponent } from "./components/in-class/demo-forms/demo-forms.component";
-import { DemoValidationHomeComponent } from "./components/in-class/demo-validation/demo-validation-home/demo-validation-home.component";
-import { DemoValidationReactiveComponent } from "./components/in-class/demo-validation/demo-validation-reactive/demo-validation-reactive.component";
-import { DemoValidationTemplateComponent } from "./components/in-class/demo-validation/demo-validation-template/demo-validation-template.component";
-import { DemoValidationComponent } from "./components/in-class/demo-validation/demo-validation.component";
-import { MustMatchDirective } from "./components/in-class/demo-validation/_helpers/must-match.directive";
-import { FooterComponent } from "./components/in-class/footer/footer.component";
-import { HomeComponent } from "./components/in-class/home/home.component";
-import { UserDetailsComponent } from "./components/in-class/home/user-details/user-details.component";
-import { InClassHomeComponent } from "./components/in-class/in-class-home/in-class-home.component";
-import { InClassComponent } from "./components/in-class/in-class.component";
-import { LoginComponent } from "./components/in-class/login/login.component";
-import { MyPageComponent } from "./components/in-class/mypage/mypage.component";
-import { ServerDetailsComponent } from "./components/in-class/server-details/server-details.component";
-import { ServerEditorComponent } from "./components/in-class/server-editor/server-editor.component";
-import { ServersListComponent } from "./components/in-class/servers-list/servers-list.component";
 import { ConfirmEqualValidatorDirective } from "./directives/confirm-equal-validator.directive";
 import { rowDirective } from "./directives/row.directive";
 import { AppRoutingModule } from "./routing/app-routing.module";
@@ -53,32 +30,20 @@ import { ExternalEmplService } from "./services/4-services/external-employee-ser
 import { FakeEmplService } from "./services/4-services/fake-employee-service";
 import { NavHandlerService } from "./services/5-navigation/nav-handler.service";
 import { ProductsService } from "./services/5-navigation/shopping/product/products-service.service";
-import { AuthService } from "./services/8-Authentication/auth.service";
-import { AuthGuardService } from "./services/in-class/auth-guard.service";
-import { ComponentDeactivationGuardService } from "./services/in-class/component-deactivation-guard.service";
-import { ServerResolverService } from "./services/in-class/server-resolver.service";
-import { ServersService } from "./services/in-class/servers.service";
 import { GlobalErrorHandler } from "./support/globalErrorHandler";
+import { LoginComponent } from "./components/login/login.component";
+import { FooterComponent } from "./components/footer/footer.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
     FakeEmplListComponent,
-    LoginComponent,
     rowDirective,
     InjectionComponent,
     HttpClientComponent,
-    HomeComponent,
     ErrorComponent,
-    MyPageComponent,
-    FooterComponent,
-    UserDetailsComponent,
-    BlogComponent,
-    NewBlogComponent,
-    OtherBlogComponent,
-    ServerDetailsComponent,
-    ServerEditorComponent,
-    ServersListComponent,
+    LoginComponent,
     ShoppingHomeComponent,
     ShoppingProductComponent,
     ShoppingContactComponent,
@@ -86,16 +51,6 @@ import { GlobalErrorHandler } from "./support/globalErrorHandler";
     ProductDetailsComponent,
     ServicesComponent,
     ServicesHomeComponent,
-    InClassComponent,
-    InClassHomeComponent,
-    DemoFormsComponent,
-    DemoFormsHomeComponent,
-    DemoFormsTemplateComponent,
-    DemoFormsReactiveComponent,
-    DemoValidationComponent,
-    DemoValidationHomeComponent,
-    DemoValidationTemplateComponent,
-    DemoValidationReactiveComponent,
     FormsComponent,
     FormsHomeComponent,
     FormsTemplateComponent,
@@ -104,7 +59,6 @@ import { GlobalErrorHandler } from "./support/globalErrorHandler";
     ValidationHomeComponent,
     ValidationTemplateComponent,
     ValidationReactiveComponent,
-    MustMatchDirective,
     ConfirmEqualValidatorDirective,
   ],
   imports: [
@@ -120,11 +74,6 @@ import { GlobalErrorHandler } from "./support/globalErrorHandler";
     FakeEmplService,
     ExternalEmplService,
     NavHandlerService,
-    ServersService,
-    AuthService,
-    AuthGuardService,
-    ComponentDeactivationGuardService,
-    ServerResolverService,
     ProductsService,
   ],
   bootstrap: [AppComponent],

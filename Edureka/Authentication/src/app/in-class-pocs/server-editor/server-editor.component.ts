@@ -1,11 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Observable } from "rxjs";
-
-import { Server } from "src/app/domain/in-class/server";
-import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
-import { CanComponentDeactivate } from "src/app/services/in-class/component-deactivation-guard.service";
-import { ServersService } from "src/app/services/in-class/servers.service";
+import { Server } from "../../domain/in-class/server";
+import { NavHandlerService } from "../../services/5-navigation/nav-handler.service";
+import { CanComponentDeactivate } from "../services/component-deactivation-guard.service";
+import { ServersService } from "../services/servers.service";
 
 @Component({
   selector: "app-edit-server",
