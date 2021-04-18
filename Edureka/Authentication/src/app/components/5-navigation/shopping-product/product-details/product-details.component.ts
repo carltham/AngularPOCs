@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from "src/app/domain/5-navigation/shopping/product.ts";
-import { URL_PATH } from "src/app/routing/url-paths";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
 import { ProductsService } from "src/app/services/5-navigation/shopping/product/products-service.service";
 

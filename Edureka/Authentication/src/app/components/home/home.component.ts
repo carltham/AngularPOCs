@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { User } from "src/app/domain/8-Authentication/user";
-import { URL_PATH } from "src/app/routing/url-paths";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
 import { UserService } from "src/app/services/8-Authentication/user.service";
+import { URL_PATH } from "../../support/url-paths";
 
 @Component({
   selector: "app-home",

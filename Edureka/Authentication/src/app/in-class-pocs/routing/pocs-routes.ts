@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
 import { ErrorComponent } from "../../components/error/error.component";
-import { URL_PATH } from "../../routing/url-paths";
-import { AuthGuardService } from "../../services/in-class/auth-guard.service";
+import { URL_PATH } from "../../support/url-paths";
 import { BlogComponent } from "../blog/blog.component";
 import { NewBlogComponent } from "../blog/new-blog/new-blog.component";
 import { OtherBlogComponent } from "../blog/other-blog/other-blog.component";
@@ -19,8 +18,14 @@ import { MyPageComponent } from "../mypage/mypage.component";
 import { ServerDetailsComponent } from "../server-details/server-details.component";
 import { ServerEditorComponent } from "../server-editor/server-editor.component";
 import { ServersListComponent } from "../servers-list/servers-list.component";
+import { AuthGuardService } from "../services/auth-guard.service";
 
 export const pocRoutes: Routes = [
+  {
+    path: URL_PATH.EMPTY,
+    redirectTo: URL_PATH.INCLASS,
+    pathMatch: "full",
+  },
   {
     path: URL_PATH.INCLASS,
     component: InClassComponent,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { User } from "../../domain/8-Authentication/user";
-import { URL_PATH } from "../../routing/url-paths";
+import { URL_PATH } from "../../support/url-paths";
 import { NavHandlerService } from "../../services/5-navigation/nav-handler.service";
 import { UserService } from "../../services/8-Authentication/user.service";
 import { AuthService } from "../../services/8-Authentication/auth.service";

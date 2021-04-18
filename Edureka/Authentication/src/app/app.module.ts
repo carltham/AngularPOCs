@@ -33,12 +33,15 @@ import { ProductsService } from "./services/5-navigation/shopping/product/produc
 import { GlobalErrorHandler } from "./support/globalErrorHandler";
 import { LoginComponent } from "./components/login/login.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { UserDetailsComponent } from "./components/home/user-details/user-details.component";
+import { HomeComponent } from "./components/home/home.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     FakeEmplListComponent,
+    HomeComponent,
     rowDirective,
     InjectionComponent,
     HttpClientComponent,
@@ -60,6 +63,7 @@ import { FooterComponent } from "./components/footer/footer.component";
     ValidationTemplateComponent,
     ValidationReactiveComponent,
     ConfirmEqualValidatorDirective,
+    UserDetailsComponent,
   ],
   imports: [
     AppRoutingModule,

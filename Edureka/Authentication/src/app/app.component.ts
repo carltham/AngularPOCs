@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Route } from "./domain/local/configuration/Route";
-import { URL_PATH } from "./routing/url-paths";
+import { URL_PATH } from "./support/url-paths";
 import { NavHandlerService } from "./services/5-navigation/nav-handler.service";
 
 @Component({

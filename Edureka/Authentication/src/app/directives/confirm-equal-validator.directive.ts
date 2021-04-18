@@ -42,7 +42,6 @@ export class LocalEqualValidator implements Validator {
             validateEqual: { value: thisControlValue },
           }
         : null;
-    console.log("validateEqual::result = ", result);
     return result;
   }
 }

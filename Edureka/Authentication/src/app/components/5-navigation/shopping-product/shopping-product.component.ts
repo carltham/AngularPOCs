@@ -1,12 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from "src/app/domain/5-navigation/shopping/product.ts";
-import { ExternalEmployee } from "src/app/domain/com.restapiexample/employee-external";
 import { Header } from "src/app/domain/local/configuration/header";
-import { URL_PATH } from "src/app/routing/url-paths";
-import { ExternalEmplService } from "src/app/services/4-services/external-employee-service";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
 import { ProductsService } from "src/app/services/5-navigation/shopping/product/products-service.service";
+import { URL_PATH } from "../../../support/url-paths";
 
 @Component({
   selector: "app-product",

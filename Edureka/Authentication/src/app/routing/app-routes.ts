@@ -21,12 +21,13 @@ import { ErrorComponent } from "../components/error/error.component";
 import { HomeComponent } from "../components/home/home.component";
 import { UserDetailsComponent } from "../components/home/user-details/user-details.component";
 import { LoginComponent } from "../components/login/login.component";
-import { URL_PATH } from "./url-paths";
+import { URL_PATH } from "../support/url-paths";
+import { PocsRoutingModule } from "../in-class-pocs/routing/pocs-routing.module";
 
 export const appRoutes: Routes = [
   {
     path: URL_PATH.EMPTY,
-    redirectTo: URL_PATH.VALIDATION + "/" + URL_PATH.BY_REACTIVE,
+    redirectTo: URL_PATH.INCLASS,
     pathMatch: "full",
   },
   { path: URL_PATH.HOME, component: HomeComponent },
@@ -119,6 +120,11 @@ export const appRoutes: Routes = [
         component: ValidationReactiveComponent,
       },
     ],
+  },
+  {
+    path: URL_PATH.INCLASS,
+    loadChildren: () =>
+      import("../in-class-pocs/pocs.module").then((m) => m.PocsModule),
   },
   {
     path: URL_PATH.NOTFOUND,

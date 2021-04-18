@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { URL_PATH } from "src/app/routing/url-paths";
+import { URL_PATH } from "../../support/url-paths";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Route } from "src/app/domain/local/configuration/Route";
-import { URL_PATH } from "src/app/routing/url-paths";
+import { URL_PATH } from "../../support/url-paths";
 
 @Component({
   selector: "app-shopping",

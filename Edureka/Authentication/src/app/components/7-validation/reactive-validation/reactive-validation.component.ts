@@ -31,17 +31,6 @@ export class ValidationReactiveComponent implements OnInit {
       : expectedError !== ""
       ? true
       : field?.valid;
-    if (fieldName === "contactDetails.telephone" && expectedError === "") {
-      console.log("fieldName = ", fieldName);
-      console.log("errors = ", errors);
-      console.log(
-        "expectedError, hasExpectedError = ",
-        expectedError,
-        hasExpectedError
-      );
-      console.log("field?.valid) = ", field?.valid);
-      console.log("field, result = ", field, result);
-    }
     return result;
   }
   isInValid(fieldName: string, expectedError: string = "") {
