@@ -1,6 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { TestBed } from "@angular/core/testing";
-import { FakeEmplService } from "../4-services/fake-employee-service";
+import { FakeEmplService } from "./fake-employee-service";
 
 describe("FakeEmplService", () => {
   let service: FakeEmplService;

@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Header } from "src/app/domain/local/configuration/header";
-import { User } from "src/app/domain/in-class/user";
-import { URL_PATH } from "src/app/routing/url-paths";
-import { UserService } from "src/app/services/user.service";
-import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
+import { Header } from "../../../../../../tserver/src/domain/Header";
+import { User } from "../../../../domain/8-Authentication/user";
+import { URL_PATH } from "../../../../routing/url-paths";
+import { NavHandlerService } from "../../../../services/5-navigation/nav-handler.service";
+import { UserService } from "../../../../services/8-Authentication/user.service";
 
 @Component({
   selector: "app-user-details",

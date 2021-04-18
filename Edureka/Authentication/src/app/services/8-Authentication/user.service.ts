@@ -1,18 +1,18 @@
 import { Injectable } from "@angular/core";
-import { User } from "src/app/domain/in-class/user";
+import { User } from "src/app/domain/8-Authentication/user";
 import { Header } from "src/app/domain/local/configuration/header";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserService {
-  emptyUser: User = { id: -1, fullName: "", userName: "" };
+  emptyUser: User = { id: -1, fullName: "", userName: "", password: "" };
   users: User[] = [
-    { id: 0, fullName: "AAAA", userName: "aaaa" },
-    { id: 100, fullName: "BBBB", userName: "bbbb" },
-    { id: 101, fullName: "ZZZZ", userName: "zzzz" },
-    { id: 151, fullName: "XXXX", userName: "xxxx" },
-    { id: 199, fullName: "XXXY", userName: "xxxy" },
+    { id: 0, fullName: "AAAA", userName: "aaaa", password: "aaaa" },
+    { id: 100, fullName: "BBBB", userName: "bbbb", password: "bbbb" },
+    { id: 101, fullName: "ZZZZ", userName: "zzzz", password: "zzzz" },
+    { id: 151, fullName: "XXXX", userName: "xxxx", password: "xxxx" },
+    { id: 199, fullName: "XXXY", userName: "xxxy", password: "xxxy" },
   ];
 
   constructor() {}

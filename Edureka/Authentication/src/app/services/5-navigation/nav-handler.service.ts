@@ -8,7 +8,7 @@ import {
 } from "@angular/router";
 import { filter, pairwise } from "rxjs/operators";
 import { Processor } from "src/app/domain/local/functional-interfaces/processor";
-import { AuthService } from "../in-class/auth.service";
+import { AuthService } from "../8-Authentication/auth.service";
 
 @Injectable({
   providedIn: "root",

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { User } from "src/app/domain/in-class/user";
+import { User } from "src/app/domain/8-Authentication/user";
 import { URL_PATH } from "src/app/routing/url-paths";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
 import { UserService } from "src/app/services/8-Authentication/user.service";
@@ -12,7 +12,7 @@ import { UserService } from "src/app/services/8-Authentication/user.service";
 })
 export class HomeComponent implements OnInit {
   knownUsers: User[] = [];
-  selectedUser: User = { id: -1, fullName: "", userName: "" };
+  selectedUser: User = { id: -1, fullName: "", userName: "", password: "" };
   selectedUserId: number = -1;
   selectedResponseId: number = -1;
 

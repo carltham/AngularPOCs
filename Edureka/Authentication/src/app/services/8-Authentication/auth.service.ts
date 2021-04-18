@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { User } from "src/app/domain/in-class/user";
+import { User } from "src/app/domain/8-Authentication/user";
 import { UserService } from "../8-Authentication/user.service";
 
 @Injectable({
