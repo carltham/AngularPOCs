@@ -10,7 +10,7 @@ describe("MyPageComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MyPageComponent],
+      declarations: [],
       imports: [AppRoutingModule],
       providers: [],
     })
