@@ -6,13 +6,15 @@ import { first } from "rxjs/operators";
 import { AuthUserService } from "../_services/auth-user.service";
 import { AuthenticationService } from "../_services/authentication.service";
 import { AlertService } from "../_services/alert.service";
+import { emptyUser } from "../_models/user";
+import { URL_PATH } from "../../../support/url-paths";
 
 @Component({
   selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.css"],
+  templateUrl: "./auth-register.component.html",
+  styleUrls: ["./auth-register.component.css"],
 })
-export class RegisterComponent implements OnInit {
+export class AuthRegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   loading = false;
   submitted = false;
@@ -23,7 +25,9 @@ export class RegisterComponent implements OnInit {
     private userService: AuthUserService,
     private alertService: AlertService
   ) {
-    if (this.authenticationService.currentUserValue) {
+    console.log("AuthRegisterComponent::constructor");
+
+    if (this.authenticationService.currentUserValue !== emptyUser) {
       this.router.navigate(["/"]);
     }
   }
@@ -57,7 +61,11 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (data) => {
           this.alertService.success("Registration successful", true);
-          this.router.navigate(["/login"]);
+          setTimeout(() => {
+            this.router.navigate([
+              URL_PATH.INCLASS + "/" + URL_PATH.AUTH + "/" + URL_PATH.LOGIN,
+            ]);
+          }, 3000);
         },
         (error) => {
           this.alertService.error(error);

@@ -1,36 +1,23 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
-import { AlertComponent } from "./alert/alert.component";
-import { AuthRoutingModule } from "./auth-routing.module";
+import { AuthAlertComponent } from "./auth-alert/auth-alert.component";
+import { AuthHomeComponent } from "./auth-home/auth-home.component";
+import { AuthLoginComponent } from "./auth-login/auth-login.component";
+import { AuthRegisterComponent } from "./auth-register/auth-register.component";
+import { AuthRoutingModule } from "./auth-routing/auth-routing.module";
 import { AuthComponent } from "./auth.component";
-import { HomeComponent } from "./home/home.component";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
-import { ErrorInterceptor } from "./_helpers/error.interceptor";
-import { fakeBackendProvider } from "./_helpers/fake-backend";
-import { JwtInterceptor } from "./_helpers/jwt.interceptor";
 
 @NgModule({
   declarations: [
     AuthComponent,
-    LoginComponent,
-    RegisterComponent,
-    HomeComponent,
-    AlertComponent,
+    AuthLoginComponent,
+    AuthRegisterComponent,
+    AuthHomeComponent,
+    AuthAlertComponent,
   ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    AuthRoutingModule,
-    HttpClientModule,
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider,
-  ],
+  imports: [ReactiveFormsModule, AuthRoutingModule, CommonModule],
+  providers: [],
   bootstrap: [AuthComponent],
 })
 export class AuthModule {}

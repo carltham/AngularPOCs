@@ -9,6 +9,8 @@ import {
 } from "@angular/common/http";
 import { Observable, of, throwError } from "rxjs";
 import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
+import { User } from "../_models/user";
+import * as moment from "moment";
 
 // array in local storage for registered users
 let usersString = localStorage.getItem("users");
@@ -16,10 +18,17 @@ let users = usersString ? JSON.parse(usersString) : [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+  start() {
+    console.log("FakeBackendInterceptor::start()");
+  }
+  constructor() {
+    console.log("FakeBackendInterceptor::constructor");
+  }
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log("FakeBackendInterceptor::intercept()");
     const { url, method, headers, body } = request;
 
     // wrap in delayed observable to simulate server api call
@@ -30,6 +39,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       .pipe(dematerialize());
 
     function handleRoute() {
+      console.log(
+        "FakeBackendInterceptor::handleRoute:url-method",
+        url,
+        method
+      );
+
       switch (true) {
         case url.endsWith("/users/register") && method === "POST":
           return register();
@@ -50,11 +65,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function register() {
       const user = body;
 
-      if (users.find((x) => x.username === user.username)) {
+      if (users.find((x: User) => x.username === user.username)) {
         return error('Username "' + user.username + '" is already taken');
       }
 
-      user.id = users.length ? Math.max(...users.map((x) => x.id)) + 1 : 1;
+      user.id = users.length
+        ? Math.max(...users.map((x: User) => x.id)) + 1
+        : 1;
       users.push(user);
       localStorage.setItem("users", JSON.stringify(users));
 
@@ -64,9 +81,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function authenticate() {
       const { username, password } = body;
       const user = users.find(
-        (x) => x.username === username && x.password === password
+        (x: User) => x.username === username && x.password === password
       );
-      if (!user) return error("Username or password is incorrect");
+      if (!user) {
+        return error("Username or password is incorrect");
+      }
+
       return ok({
         id: user.id,
         username: user.username,
@@ -84,18 +104,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function deleteUser() {
       if (!isLoggedIn()) return unauthorized();
 
-      users = users.filter((x) => x.id !== idFromUrl());
+      users = users.filter((x: any = "") => x.id !== idFromUrl());
       localStorage.setItem("users", JSON.stringify(users));
       return ok();
     }
 
     // helper functions
 
-    function ok(body?) {
+    function ok(body: any = "") {
       return of(new HttpResponse({ status: 200, body }));
     }
 
-    function error(message) {
+    function error(message: string) {
       return throwError({ error: { message } });
     }
 
@@ -104,7 +124,33 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function isLoggedIn() {
-      return headers.get("Authorization") === "Bearer fake-jwt-token";
+      console.log("FakeBackendInterceptor::isLoggedIn:moment() = ", moment());
+      console.log(
+        "FakeBackendInterceptor::isLoggedIn:moment().isBefore(getExpiration()) = ",
+        moment().isBefore(getExpiration())
+      );
+
+      return (
+        headers.get("Authorization") === "Bearer fake-jwt-token" &&
+        moment().isBefore(getExpiration())
+      );
+    }
+
+    function getExpiration() {
+      const expiration = localStorage.getItem("expires_at");
+      const id_token = localStorage.getItem("id_token");
+      let expiresAt;
+      let expiresMoment;
+      if (expiration) {
+        expiresAt = JSON.parse(expiration);
+        expiresMoment = moment(expiresAt);
+      }
+      console.log("FakeBackendInterceptor::isLoggedIn::headers = ", headers);
+      console.log("expiration = ", expiration);
+      console.log("expiresAt = ", expiresAt);
+      console.log("expiresMoment = ", expiresMoment);
+      console.log("id_token = ", id_token);
+      return moment(expiresAt);
     }
 
     function idFromUrl() {

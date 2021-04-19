@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
 import { FakeEmplService } from "./fake-employee-service";
 
@@ -7,7 +7,7 @@ describe("FakeEmplService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientTestingModule],
       providers: [FakeEmplService],
     });
     service = TestBed.inject(FakeEmplService);

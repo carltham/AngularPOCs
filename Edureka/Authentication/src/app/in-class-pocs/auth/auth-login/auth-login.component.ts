@@ -5,13 +5,14 @@ import { first } from "rxjs/operators";
 
 import { AuthenticationService } from "../_services/authentication.service";
 import { AlertService } from "../_services/alert.service";
+import { emptyUser } from "../_models/user";
 
 @Component({
   selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"],
+  templateUrl: "./auth-login.component.html",
+  styleUrls: ["./auth-login.component.css"],
 })
-export class LoginComponent implements OnInit {
+export class AuthLoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   loading = false;
   submitted = false;
@@ -24,7 +25,12 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private alertService: AlertService
   ) {
-    if (this.authenticationService.currentUserValue) {
+    console.log(
+      "this.authenticationService.currentUserValue = ",
+      this.authenticationService.currentUserValue
+    );
+
+    if (this.authenticationService.currentUserValue !== emptyUser) {
       this.router.navigate(["/"]);
     }
   }

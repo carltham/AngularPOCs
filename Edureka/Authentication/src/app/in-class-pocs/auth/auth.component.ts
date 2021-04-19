@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-
+import { emptyUser, User } from "./_models/user";
 import { AuthenticationService } from "./_services/authentication.service";
-import { User, emptyUser } from "./_models/user";
+import { URL_PATH } from "../../support/url-paths";
 
 @Component({
   selector: "auth-root",
@@ -24,6 +24,10 @@ export class AuthComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(["/login"]);
+    setTimeout(() => {
+      this.router.navigate([
+        URL_PATH.INCLASS + "/" + URL_PATH.AUTH + "/" + URL_PATH.LOGIN,
+      ]);
+    }, 3000);
   }
 }

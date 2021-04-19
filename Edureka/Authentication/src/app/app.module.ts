@@ -1,5 +1,3 @@
-import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -23,6 +21,10 @@ import { ValidationTemplateComponent } from "./components/7-validation/template-
 import { ValidationHomeComponent } from "./components/7-validation/validation-home/validation-home.component";
 import { ValidationComponent } from "./components/7-validation/validation.component";
 import { ErrorComponent } from "./components/error/error.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { HomeComponent } from "./components/home/home.component";
+import { UserDetailsComponent } from "./components/home/user-details/user-details.component";
+import { LoginComponent } from "./components/login/login.component";
 import { ConfirmEqualValidatorDirective } from "./directives/confirm-equal-validator.directive";
 import { rowDirective } from "./directives/row.directive";
 import { AppRoutingModule } from "./routing/app-routing.module";
@@ -31,10 +33,6 @@ import { FakeEmplService } from "./services/4-services/fake-employee-service";
 import { NavHandlerService } from "./services/5-navigation/nav-handler.service";
 import { ProductsService } from "./services/5-navigation/shopping/product/products-service.service";
 import { GlobalErrorHandler } from "./support/globalErrorHandler";
-import { LoginComponent } from "./components/login/login.component";
-import { FooterComponent } from "./components/footer/footer.component";
-import { UserDetailsComponent } from "./components/home/user-details/user-details.component";
-import { HomeComponent } from "./components/home/home.component";
 
 @NgModule({
   declarations: [
@@ -65,14 +63,7 @@ import { HomeComponent } from "./components/home/home.component";
     ConfirmEqualValidatorDirective,
     UserDetailsComponent,
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    CommonModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  imports: [AppRoutingModule, BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     FakeEmplService,

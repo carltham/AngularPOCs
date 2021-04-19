@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AlertComponent } from "./alert.component";
+import { AuthAlertComponent } from "./auth-alert.component";
 import { RouterTestingModule } from "@angular/router/testing";
 
-describe("AlertComponent", () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe("AuthAlertComponent", () => {
+  let component: AuthAlertComponent;
+  let fixture: ComponentFixture<AuthAlertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AlertComponent],
+      declarations: [AuthAlertComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(AuthAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

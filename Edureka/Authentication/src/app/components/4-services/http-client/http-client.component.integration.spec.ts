@@ -1,16 +1,8 @@
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-
-import {
-  ComponentFixture,
-  fakeAsync,
-  flush,
-  TestBed,
-  tick,
-  waitForAsync,
-} from "@angular/core/testing";
+import { HttpClient } from "@angular/common/http";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { FormsModule } from "@angular/forms";
 import { HttpClientComponent } from "src/app/components/4-services/http-client/http-client.component";
-import { ExternalEmplService } from "src/app/services/4-services/external-employee-service";
 
 let response: any;
 let httpClient: HttpClient;
@@ -18,12 +10,11 @@ let httpClient: HttpClient;
 describe("HttpClientComponent", () => {
   let component: HttpClientComponent;
   let fixture: ComponentFixture<HttpClientComponent>;
-  let service: ExternalEmplService;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [FormsModule, HttpClientModule],
+        imports: [FormsModule, HttpClientTestingModule],
         declarations: [HttpClientComponent],
         providers: [],
       })

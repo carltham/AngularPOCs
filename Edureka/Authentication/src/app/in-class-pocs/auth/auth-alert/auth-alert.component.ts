@@ -1,14 +1,13 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-
 import { AlertService } from "../_services/alert.service";
 
 @Component({
   selector: "app-alert",
-  templateUrl: "./alert.component.html",
-  styleUrls: ["./alert.component.css"],
+  templateUrl: "./auth-alert.component.html",
+  styleUrls: ["./auth-alert.component.css"],
 })
-export class AlertComponent implements OnInit, OnDestroy {
+export class AuthAlertComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   message: any;
 
@@ -16,6 +15,8 @@ export class AlertComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.alertService.getAlert().subscribe((message) => {
+      console.log("message = ", message);
+
       switch (message && message.type) {
         case "success":
           message.cssClass = "alert alert-success";

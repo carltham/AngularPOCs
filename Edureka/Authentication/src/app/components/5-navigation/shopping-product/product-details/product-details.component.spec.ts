@@ -1,11 +1,9 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "src/app/routing/app-routing.module";
 import { ExternalEmplService } from "src/app/services/4-services/external-employee-service";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
 import { ProductsService } from "src/app/services/5-navigation/shopping/product/products-service.service";
-
 import { ProductDetailsComponent } from "./product-details.component";
 
 describe("ProductDetailsComponent", () => {
@@ -15,7 +13,7 @@ describe("ProductDetailsComponent", () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [HttpClientModule, AppRoutingModule],
+        imports: [HttpClientTestingModule, AppRoutingModule],
         declarations: [ProductDetailsComponent],
         providers: [ExternalEmplService, ProductsService, NavHandlerService],
       })

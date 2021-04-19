@@ -22,17 +22,12 @@ import { AuthGuardService } from "../services/auth-guard.service";
 
 export const pocRoutes: Routes = [
   {
-    path: URL_PATH.EMPTY,
-    redirectTo: URL_PATH.INCLASS,
-    pathMatch: "full",
-  },
-  {
-    path: URL_PATH.INCLASS,
+    path: "",
     component: InClassComponent,
     children: [
       {
         path: URL_PATH.EMPTY,
-        redirectTo: URL_PATH.HOME,
+        redirectTo: URL_PATH.AUTH,
         pathMatch: "full",
       },
       {
@@ -108,6 +103,11 @@ export const pocRoutes: Routes = [
             component: DemoValidationReactiveComponent,
           },
         ],
+      },
+      {
+        path: URL_PATH.AUTH,
+        loadChildren: () =>
+          import("../auth/auth.module").then((m) => m.AuthModule),
       },
       { path: URL_PATH.MYPAGEID, component: MyPageComponent },
       { path: URL_PATH.MYPAGE, component: MyPageComponent },

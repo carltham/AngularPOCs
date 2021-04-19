@@ -3,8 +3,10 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
+import * as moment from "moment";
 import { User, emptyUser } from "../_models/user";
 import { environment } from "../environments/environment";
+import { Constants } from "../../../support/constants";
 
 @Injectable({ providedIn: "root" })
 export class AuthenticationService {
@@ -31,8 +33,15 @@ export class AuthenticationService {
       })
       .pipe(
         map((user) => {
+          console.log("AuthenticationService::login:User = ", user);
+          const expiresAt = moment().add(Constants._60_SEC, "second");
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem("currentUser", JSON.stringify(user));
+          localStorage.setItem("id_token", user.token);
+          localStorage.setItem(
+            "expires_at",
+            JSON.stringify(expiresAt.valueOf())
+          );
           this.currentUserSubject.next(user);
           return user;
         })
@@ -42,6 +51,8 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("expires_at");
     this.currentUserSubject.next(emptyUser);
   }
 }

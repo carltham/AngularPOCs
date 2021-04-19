@@ -1,0 +1,6 @@
+<div *ngIf="message && message?.text.error" [ngClass]="message.cssClass">
+  {{ message.text.error.message }}
+</div>
+<div *ngIf="message && !message?.text.error" [ngClass]="message.cssClass">
+  {{ message.text }}
+</div>

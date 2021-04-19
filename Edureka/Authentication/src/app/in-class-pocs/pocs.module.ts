@@ -1,5 +1,4 @@
 import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BlogComponent } from "./blog/blog.component";
@@ -44,13 +43,7 @@ import { AuthGuardService } from "./services/auth-guard.service";
     DemoValidationReactiveComponent,
     MustMatchDirective,
   ],
-  imports: [
-    PocsRoutingModule,
-    CommonModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  imports: [PocsRoutingModule, CommonModule, FormsModule, ReactiveFormsModule],
   providers: [AuthGuardService],
   bootstrap: [InClassComponent],
 })
