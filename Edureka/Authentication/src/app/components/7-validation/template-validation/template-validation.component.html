@@ -11,18 +11,18 @@
       >
         <div class="form-row">
           <div class="form-group col-5">
-            <label [ngClass]="{ 'ng-valid': fullName.valid }">Full Name</label>
+            <label [ngClass]="{ 'ng-valid': firstName.valid }">Full Name</label>
             <input
               type="text"
-              name="fullName"
+              name="firstName"
               class="form-control"
-              [(ngModel)]="model.fullName"
-              #fullName="ngModel"
+              [(ngModel)]="model.firstName"
+              #firstName="ngModel"
               required
             />
             <div
               class="error"
-              *ngIf="fullName.pristine || fullName.errors?.required"
+              *ngIf="firstName.pristine || firstName.errors?.required"
             >
               Field is reqired !
             </div>

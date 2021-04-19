@@ -7,13 +7,13 @@
           <label>Username</label>
           <input
             type="text"
-            name="userName"
-            formControlName="userName"
+            name="username"
+            formControlName="username"
             class="form-control"
           />
           <label>Full Name</label>
-          <input type="text" formControlName="fullName" class="form-control" />
-          <div class="error" *ngIf="!isValid('personal.fullName')">
+          <input type="text" formControlName="firstName" class="form-control" />
+          <div class="error" *ngIf="!isValid('personal.firstName')">
             Name must be at least 4 characters long.
           </div>
         </div>
@@ -21,7 +21,7 @@
           class="bordered"
           name="contactDetails"
           formGroupName="contactDetails"
-          *ngIf="isValid('personal.fullName')"
+          *ngIf="isValid('personal.firstName')"
         >
           <label>Address</label>
           <input type="text" formControlName="address" class="form-control" />
@@ -35,7 +35,7 @@
           formGroupName="loginDetails"
           class="bordered"
           *ngIf="
-            isValid('personal.fullName') && isValid('contactDetails.address')
+            isValid('personal.firstName') && isValid('contactDetails.address')
           "
         >
           <label>Email</label>
@@ -65,7 +65,7 @@
         <div
           class="panel form-group form-check"
           *ngIf="
-            isValid('personal.fullName') &&
+            isValid('personal.firstName') &&
             isValid('contactDetails.address') &&
             isValid('loginDetails.password')
           "
@@ -88,7 +88,7 @@
             class="btn btn-primary mr-1"
             [disabled]="
               !(
-                isValid('personal.fullName') &&
+                isValid('personal.firstName') &&
                 isValid('contactDetails.address') &&
                 isValid('loginDetails.password') &&
                 isValid('acceptTerms')

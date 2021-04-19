@@ -16,7 +16,7 @@ export class DemoValidationHomeComponent implements OnInit {
 
   constructor() {
     this.myFormModel = new FormGroup({
-      userName: new FormControl(""),
+      username: new FormControl(""),
       ssn: new FormControl(""),
       passwordGroup: new FormGroup({
         password: new FormControl(""),

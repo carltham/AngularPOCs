@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthHomeComponent } from "../auth-home/auth-home.component";
 import { AuthLoginComponent } from "../auth-login/auth-login.component";
 import { AuthRegisterComponent } from "../auth-register/auth-register.component";
-import { AuthGuard } from "../_helpers/auth.guard";
+import { AuthGuard } from "../../../8-authentication/_helpers/auth.guard";
 import { URL_PATH } from "../../../support/url-paths";
 import { AuthComponent } from "../auth.component";
 

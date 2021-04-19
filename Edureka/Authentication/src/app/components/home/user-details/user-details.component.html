@@ -3,7 +3,7 @@
 <div class="centeredText">
   <h3>Welcome</h3>
   <span *ngIf="selectedUserId >= 0">
-    <h5>User : {{ selectedUser.fullName }}, your details !!</h5>
+    <h5>User : {{ selectedUser.firstName }}, your details !!</h5>
   </span>
   <span *ngIf="selectedUserId < 0">
     <h5>unknown user !!</h5>
@@ -25,11 +25,11 @@
           <label>{{ selectedUser.id }}</label>
         </td>
         <td>
-          <label id="name">{{ selectedUser.fullName }}</label>
+          <label id="name">{{ selectedUser.firstName }}</label>
         </td>
 
         <td>
-          <label id="salary">{{ selectedUser.userName }}</label>
+          <label id="salary">{{ selectedUser.username }}</label>
         </td>
       </tr>
     </tbody>

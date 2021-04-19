@@ -1,18 +1,52 @@
 import { Injectable } from "@angular/core";
-import { User } from "src/app/domain/8-Authentication/user";
 import { Header } from "src/app/domain/local/configuration/header";
+import { emptyUser, User } from "../../domain/user";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserService {
-  emptyUser: User = { id: -1, fullName: "", userName: "", password: "" };
   users: User[] = [
-    { id: 0, fullName: "AAAA", userName: "aaaa", password: "aaaa" },
-    { id: 100, fullName: "BBBB", userName: "bbbb", password: "bbbb" },
-    { id: 101, fullName: "ZZZZ", userName: "zzzz", password: "zzzz" },
-    { id: 151, fullName: "XXXX", userName: "xxxx", password: "xxxx" },
-    { id: 199, fullName: "XXXY", userName: "xxxy", password: "xxxy" },
+    {
+      id: 0,
+      username: "aaaa",
+      password: "aaaa",
+      firstName: "AAAA",
+      lastName: "AAAA",
+      token: "",
+    },
+    {
+      id: 100,
+      username: "bbbb",
+      password: "bbbb",
+      firstName: "BBBB",
+      lastName: "AAAA",
+      token: "",
+    },
+    {
+      id: 101,
+      username: "zzzz",
+      password: "zzzz",
+      firstName: "ZZZZ",
+      lastName: "AAAA",
+      token: "",
+    },
+    {
+      id: 151,
+      username: "xxxx",
+      password: "xxxx",
+      firstName: "XXXX",
+      lastName: "AAAA",
+      token: "",
+    },
+    {
+      id: 199,
+      username: "xxxy",
+      password: "xxxy",
+      firstName: "XXXY",
+      lastName: "AAAA",
+      token: "",
+    },
   ];
 
   constructor() {}
@@ -22,7 +56,7 @@ export class UserService {
       return user.id === id;
     });
 
-    return foundUser ? foundUser : this.emptyUser;
+    return foundUser ? foundUser : emptyUser;
   }
 
   public list() {

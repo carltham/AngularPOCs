@@ -4,26 +4,29 @@
     <div class="card-body">
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="bordered" name="personal" formGroupName="personal">
-          <label [ngClass]="{ 'ng-valid': isValid('personal.userName') }"
+          <label [ngClass]="{ 'ng-valid': isValid('personal.username') }"
             >Username</label
           >
           <input
             type="text"
-            name="userName"
-            formControlName="userName"
+            name="username"
+            formControlName="username"
             class="form-control"
           />
-          <div class="error" *ngIf="isInValid('personal.userName', 'required')">
+          <div class="error" *ngIf="isInValid('personal.username', 'required')">
             Field is reqired !
           </div>
-          <label [ngClass]="{ 'ng-valid': isValid('personal.fullName') }"
+          <label [ngClass]="{ 'ng-valid': isValid('personal.firstName') }"
             >Full Name</label
           >
-          <input type="text" formControlName="fullName" class="form-control" />
-          <div class="error" *ngIf="isInValid('personal.fullName', 'required')">
+          <input type="text" formControlName="firstName" class="form-control" />
+          <div
+            class="error"
+            *ngIf="isInValid('personal.firstName', 'required')"
+          >
             Field is reqired !
           </div>
-          <div class="error" *ngIf="isInValid('personal.fullName', 'min')">
+          <div class="error" *ngIf="isInValid('personal.firstName', 'min')">
             Name must be at least 4 characters long.
           </div>
         </div>
@@ -143,7 +146,7 @@
         <div
           class="panel form-group form-check"
           *ngIf="
-            isValid('personal.fullName') &&
+            isValid('personal.firstName') &&
             isValid('contactDetails.address') &&
             isValid('loginDetails.password')
           "
@@ -178,7 +181,7 @@
             class="btn btn-primary mr-1"
             [disabled]="
               !(
-                isValid('personal.fullName') &&
+                isValid('personal.firstName') &&
                 isValid('contactDetails.address') &&
                 isValid('loginDetails.password') &&
                 isValid('acceptTerms')

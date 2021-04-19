@@ -1,35 +1,39 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { User } from "../../domain/8-Authentication/user";
+import { User, emptyUser } from "../../domain/user";
 import { URL_PATH } from "../../support/url-paths";
 import { NavHandlerService } from "../../services/5-navigation/nav-handler.service";
 import { UserService } from "../../services/8-Authentication/user.service";
 import { AuthService } from "../../services/8-Authentication/auth.service";
+import { Constants } from "../../support/constants";
 
 @Component({
   selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"],
+  templateUrl: "./authentication-login.component.html",
+  styleUrls: ["./authentication-login.component.css"],
 })
-export class LoginComponent implements OnInit {
+export class AuthenticationLoginComponent implements OnInit {
   knownUsers: User[] = [];
-  selectedUser: User = { id: -1, fullName: "", userName: "", password: "" };
+  selectedUser: User = emptyUser;
   selectedUserId: number = -1;
 
   _userName = "";
   _password = "";
+  state: string = "";
 
   constructor(
     private navHandler: NavHandlerService,
     private route: ActivatedRoute,
     private userService: UserService,
     private authService: AuthService
-  ) {}
+  ) {
+    console.log("this.state = ", this.state);
+  }
 
   doLogin() {
     if (this._userName && this._userName.length > 0) {
       let loggedinUser = this.authService.login({
-        userName: this.userName,
+        username: this.username,
         password: this.password,
       });
     }
@@ -68,14 +72,21 @@ export class LoginComponent implements OnInit {
       if (data.logout && this.navHandler.isAuthenticated()) {
         this.authService.logout();
         this.navHandler.reload("/");
+      } else if (data.list) {
+        console.log("data = ", data);
+        this.state = Constants.LIST;
+        console.log("this.state = ", this.state);
       }
     });
   }
 
-  get userName() {
+  get loggedinUser() {
+    return this.authService.loggedinUser();
+  }
+  get username() {
     return this._userName;
   }
-  set userName(value) {
+  set username(value) {
     this._userName = value;
   }
 

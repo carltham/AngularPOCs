@@ -14,11 +14,11 @@
             <label>Full Name</label>
             <input
               type="text"
-              name="fullName"
+              name="firstName"
               class="form-control"
-              [(ngModel)]="model.fullName"
-              #fullName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && fullName.invalid }"
+              [(ngModel)]="model.firstName"
+              #firstName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }"
             />
           </div>
         </div>

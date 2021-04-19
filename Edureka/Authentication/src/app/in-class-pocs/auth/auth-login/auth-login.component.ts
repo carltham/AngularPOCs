@@ -5,7 +5,7 @@ import { first } from "rxjs/operators";
 
 import { AuthenticationService } from "../_services/authentication.service";
 import { AlertService } from "../_services/alert.service";
-import { emptyUser } from "../_models/user";
+import { emptyUser } from "../../../domain/user";
 
 @Component({
   selector: "app-login",

@@ -24,7 +24,6 @@ import { ErrorComponent } from "./components/error/error.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
 import { UserDetailsComponent } from "./components/home/user-details/user-details.component";
-import { LoginComponent } from "./components/login/login.component";
 import { ConfirmEqualValidatorDirective } from "./directives/confirm-equal-validator.directive";
 import { rowDirective } from "./directives/row.directive";
 import { AppRoutingModule } from "./routing/app-routing.module";
@@ -44,7 +43,6 @@ import { GlobalErrorHandler } from "./support/globalErrorHandler";
     InjectionComponent,
     HttpClientComponent,
     ErrorComponent,
-    LoginComponent,
     ShoppingHomeComponent,
     ShoppingProductComponent,
     ShoppingContactComponent,

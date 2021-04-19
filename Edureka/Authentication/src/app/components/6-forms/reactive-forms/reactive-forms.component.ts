@@ -40,8 +40,8 @@ export class FormsReactiveComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       personal: this.formBuilder.group({
-        userName: [""],
-        fullName: ["", [Validators.required, Validators.minLength(4)]],
+        username: [""],
+        firstName: ["", [Validators.required, Validators.minLength(4)]],
       }),
       contactDetails: this.formBuilder.group({
         address: ["", [Validators.required, Validators.minLength(2)]],

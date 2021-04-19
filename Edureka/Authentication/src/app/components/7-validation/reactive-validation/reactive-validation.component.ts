@@ -59,8 +59,8 @@ export class ValidationReactiveComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       personal: this.formBuilder.group({
-        userName: ["", Validators.required],
-        fullName: ["", [Validators.required, Validators.minLength(4)]],
+        username: ["", Validators.required],
+        firstName: ["", [Validators.required, Validators.minLength(4)]],
       }),
       contactDetails: this.formBuilder.group({
         address: ["", [Validators.required, Validators.minLength(2)]],

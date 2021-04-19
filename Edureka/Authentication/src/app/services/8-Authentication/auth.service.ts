@@ -1,11 +1,15 @@
 import { Injectable } from "@angular/core";
-import { User } from "src/app/domain/8-Authentication/user";
 import { UserService } from "../8-Authentication/user.service";
+import { User, emptyUser } from "../../domain/user";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
+  loggedinUser(): User {
+    let storedUser = localStorage.getItem("loggedinUser");
+    return storedUser ? JSON.parse(storedUser) : emptyUser;
+  }
   isLoggedin() {
     return this._loggedIn;
   }
@@ -14,11 +18,11 @@ export class AuthService {
 
   login(credentials: any): User {
     let founduser = this.userService.list().find((user) => {
-      return user.userName === credentials.userName;
+      return user.username === credentials.username;
     });
 
     this._loggedIn = founduser != undefined && founduser.id >= 0;
-    return founduser ? founduser : this.userService.emptyUser;
+    return founduser ? founduser : emptyUser;
   }
 
   logout() {

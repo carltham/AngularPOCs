@@ -1,12 +1,18 @@
 <div class="panel rounded centeredText">
   <div class="content">
     <div class="dialog">
+      <div class="width50p centered" *ngIf="isAuthenticated() === true">
+        You are logged in ( as {{ loggedinUser?.firstName }} ) !!
+      </div>
       <div
         class="width50p centered"
-        *ngIf="selectedUser.id >= 0 && isAuthenticated() === false"
+        *ngIf="
+          isAuthenticated() === false &&
+          (state === '' || (selectedUser && selectedUser.id >= 0))
+        "
       >
-        Welcome user {{ selectedUser.fullName }}, please login (
-        {{ selectedUser.userName }} )!
+        Welcome user {{ selectedUser?.firstName }}, please login (
+        {{ selectedUser.username }} )!
         <div class="panel rounded centeredText">
           <table>
             <tbody>
@@ -14,10 +20,10 @@
                 <td>username:</td>
                 <td>
                   <input
-                    id="userName"
+                    id="username"
                     type="text"
                     placeholder="Type your username"
-                    [(ngModel)]="userName"
+                    [(ngModel)]="username"
                   />
                 </td>
               </tr>
@@ -35,19 +41,21 @@
               <tr>
                 <td>Login:</td>
                 <td>
-                  <button (click)="doLogin()">click here</button>
+                  <button
+                    *ngIf="isAuthenticated() === false"
+                    (click)="doLogin()"
+                  >
+                    click here
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <div class="width50p centered" *ngIf="isAuthenticated() === true">
-        You are logged in !!
-      </div>
       <div
         class="width50p centered"
-        *ngIf="isAuthenticated() === false && selectedUser.id < 0"
+        *ngIf="state === 'LIST' && selectedUser.id < 0"
       >
         Select a user to login !! ( To reach secured areas )
         <ul>
@@ -57,7 +65,7 @@
             *ngFor="let user of knownUsers"
           >
             <label (click)="selectUser(user.id)" class="linkLookAlike">
-              {{ user.fullName }}
+              {{ user.firstName }}
             </label>
           </li>
         </ul>

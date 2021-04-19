@@ -20,14 +20,13 @@ import { ValidationComponent } from "../components/7-validation/validation.compo
 import { ErrorComponent } from "../components/error/error.component";
 import { HomeComponent } from "../components/home/home.component";
 import { UserDetailsComponent } from "../components/home/user-details/user-details.component";
-import { LoginComponent } from "../components/login/login.component";
 import { URL_PATH } from "../support/url-paths";
-import { PocsRoutingModule } from "../in-class-pocs/routing/pocs-routing.module";
+import { AuthenticationComponent } from "../8-authentication/authentication.component";
 
 export const appRoutes: Routes = [
   {
     path: URL_PATH.EMPTY,
-    redirectTo: URL_PATH.INCLASS,
+    redirectTo: URL_PATH.AUTH,
     pathMatch: "full",
   },
   { path: URL_PATH.HOME, component: HomeComponent },
@@ -122,6 +121,13 @@ export const appRoutes: Routes = [
     ],
   },
   {
+    path: URL_PATH.AUTH,
+    loadChildren: () =>
+      import("../8-authentication/authentication.module").then(
+        (m) => m.AuthenticationModule
+      ),
+  },
+  {
     path: URL_PATH.INCLASS,
     loadChildren: () =>
       import("../in-class-pocs/pocs.module").then((m) => m.PocsModule),
@@ -130,12 +136,6 @@ export const appRoutes: Routes = [
     path: URL_PATH.NOTFOUND,
     component: ErrorComponent,
     data: { message: "Page not found!" },
-  },
-  { path: URL_PATH.LOGIN, component: LoginComponent },
-  {
-    path: URL_PATH.LOGOUT,
-    component: LoginComponent,
-    data: { logout: "true" },
   },
   { path: URL_PATH.OTHER, component: ErrorComponent },
 ];

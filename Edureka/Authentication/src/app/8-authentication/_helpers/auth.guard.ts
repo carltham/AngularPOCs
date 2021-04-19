@@ -6,10 +6,10 @@ import {
   RouterStateSnapshot,
 } from "@angular/router";
 
-import { AuthenticationService } from "../_services/authentication.service";
-import { emptyUser } from "../_models/user";
+import { AuthenticationService } from "../../in-class-pocs/auth/_services/authentication.service";
+import { emptyUser } from "../../domain/user";
 import { ActivatedRoute } from "@angular/router";
-import { URL_PATH } from "../../../support/url-paths";
+import { URL_PATH } from "../../support/url-paths";
 
 @Injectable({ providedIn: "root" })
 export class AuthGuard implements CanActivate {

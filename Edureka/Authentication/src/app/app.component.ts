@@ -22,6 +22,7 @@ export class AppComponent {
     },
     { path: URL_PATH.FORMS, text: "6. Forms", options: "" },
     { path: URL_PATH.VALIDATION, text: "7. Validation", options: "" },
+    { path: URL_PATH.AUTH, text: "8. Authentication", options: "" },
     { path: URL_PATH.INCLASS, text: "In class & POCs", options: "" },
   ];
 

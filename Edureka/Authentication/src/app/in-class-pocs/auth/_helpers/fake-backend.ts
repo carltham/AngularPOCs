@@ -10,7 +10,7 @@ import { Injectable } from "@angular/core";
 import * as moment from "moment";
 import { Observable, of, throwError } from "rxjs";
 import { delay, dematerialize, materialize, mergeMap } from "rxjs/operators";
-import { User } from "../_models/user";
+import { User } from "../../../domain/user";
 
 // array in local storage for registered users
 let usersString = localStorage.getItem("users");

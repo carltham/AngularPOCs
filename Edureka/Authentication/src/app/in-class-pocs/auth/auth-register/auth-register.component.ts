@@ -6,8 +6,8 @@ import { first } from "rxjs/operators";
 import { AuthUserService } from "../_services/auth-user.service";
 import { AuthenticationService } from "../_services/authentication.service";
 import { AlertService } from "../_services/alert.service";
-import { emptyUser } from "../_models/user";
 import { URL_PATH } from "../../../support/url-paths";
+import { emptyUser } from "../../../domain/user";
 
 @Component({
   selector: "app-register",

@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { emptyUser, User } from "./_models/user";
 import { AuthenticationService } from "./_services/authentication.service";
 import { URL_PATH } from "../../support/url-paths";
+import { emptyUser, User } from "../../domain/user";
 
 @Component({
   selector: "auth-root",
