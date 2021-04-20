@@ -1,7 +1,8 @@
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
-import { ServerEditorComponent } from "./server-editor.component";
 import { ServersService } from "../services/servers.service";
+import { ServerEditorComponent } from "./server-editor.component";
 
 describe("ServerEditorComponent", () => {
   let component: ServerEditorComponent;
@@ -10,7 +11,7 @@ describe("ServerEditorComponent", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ServerEditorComponent],
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
       providers: [ServersService],
     })
       .compileComponents()

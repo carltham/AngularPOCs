@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
-import { UserService } from "src/app/services/8-Authentication/user.service";
+import { UserService } from "../../8-authentication/services/user.service";
+import { emptyUser, User } from "../../domain/user";
 import { URL_PATH } from "../../support/url-paths";
-import { User, emptyUser } from "../../domain/user";
 
 @Component({
   selector: "app-home",
@@ -43,7 +43,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.knownUsers = this.userService.list();
+    this.userService
+      .list()
+      .subscribe((data: User[]) => (this.knownUsers = data));
 
     this.route.paramMap.subscribe((dataMap) => {
       let value = dataMap.get("id");

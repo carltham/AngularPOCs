@@ -1,31 +1,37 @@
 import { Injectable } from "@angular/core";
-import { UserService } from "../8-Authentication/user.service";
-import { User, emptyUser } from "../../domain/user";
+import { UserService } from "../../8-authentication/services/user.service";
+import { emptyUser, User } from "../../domain/user";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  loggedinUser(): User {
+  isLoggedin() {
+    return this.loggedinUser !== emptyUser;
+  }
+  constructor(private userService: UserService) {}
+
+  login(credentials: any) {
+    this.userService.list().subscribe((users: User[]) => {
+      let founduser = users.find((user: User) => {
+        return user.username === credentials.username;
+      });
+      this.loggedinUser = founduser ? founduser : emptyUser;
+    });
+  }
+
+  get loggedinUser(): User {
     let storedUser = localStorage.getItem("loggedinUser");
     return storedUser ? JSON.parse(storedUser) : emptyUser;
   }
-  isLoggedin() {
-    return this._loggedIn;
-  }
-  private _loggedIn = false;
-  constructor(private userService: UserService) {}
-
-  login(credentials: any): User {
-    let founduser = this.userService.list().find((user) => {
-      return user.username === credentials.username;
-    });
-
-    this._loggedIn = founduser != undefined && founduser.id >= 0;
-    return founduser ? founduser : emptyUser;
+  set loggedinUser(user: User) {
+    let storedUser = localStorage.setItem(
+      "loggedinUser",
+      JSON.stringify(user ? user : emptyUser)
+    );
   }
 
   logout() {
-    this._loggedIn = false;
+    this.loggedinUser = emptyUser;
   }
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Header } from "src/app/domain/local/configuration/header";
 import { emptyUser, User } from "../../domain/user";
@@ -49,7 +50,7 @@ export class UserService {
     },
   ];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   public getUser(id: number) {
     let foundUser = this.users.find((user) => {
@@ -59,8 +60,8 @@ export class UserService {
     return foundUser ? foundUser : emptyUser;
   }
 
-  public list() {
-    return this.users;
+  list() {
+    return this.http.get<User[]>("/api/users");
   }
 
   getHeaders() {

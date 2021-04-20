@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { User, emptyUser } from "../../domain/user";
-import { URL_PATH } from "../../support/url-paths";
+import { emptyUser, User } from "../../domain/user";
 import { NavHandlerService } from "../../services/5-navigation/nav-handler.service";
-import { UserService } from "../../services/8-Authentication/user.service";
-import { AuthService } from "../../services/8-Authentication/auth.service";
 import { Constants } from "../../support/constants";
+import { URL_PATH } from "../../support/url-paths";
+import { AuthenticationService } from "../services/authentication.service";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: "app-login",
@@ -25,7 +25,7 @@ export class AuthenticationLoginComponent implements OnInit {
     private navHandler: NavHandlerService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthenticationService
   ) {
     console.log("this.state = ", this.state);
   }
@@ -37,7 +37,6 @@ export class AuthenticationLoginComponent implements OnInit {
         password: this.password,
       });
     }
-    // this.router.navigate([URL_PATH.LOGIN]);
   }
 
   selectUser(id: number) {
@@ -61,7 +60,9 @@ export class AuthenticationLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.knownUsers = this.userService.list();
+    this.userService.list().subscribe((data: User[]) => {
+      this.knownUsers = data;
+    });
     this.navHandler.getParam("id", {
       process: (value) => {
         this.selectedUserId = parseInt(value);
@@ -81,7 +82,7 @@ export class AuthenticationLoginComponent implements OnInit {
   }
 
   get loggedinUser() {
-    return this.authService.loggedinUser();
+    return this.authService.loggedinUser;
   }
   get username() {
     return this._userName;
