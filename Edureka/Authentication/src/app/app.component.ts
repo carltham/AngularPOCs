@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
+import { SystemService } from "./8-authentication/services/system.service";
 import { Route } from "./domain/local/configuration/Route";
 import { URL_PATH } from "./support/url-paths";
-import { NavHandlerService } from "./services/5-navigation/nav-handler.service";
 
 @Component({
   selector: "app-root",
@@ -26,8 +26,9 @@ export class AppComponent {
     { path: URL_PATH.INCLASS, text: "In class & POCs", options: "" },
   ];
 
-  constructor(private navHandler: NavHandlerService) {}
+  constructor(private systemService: SystemService) {}
+
   isAuthenticated() {
-    return this.navHandler.isAuthenticated();
+    return this.systemService.isLoggedIn();
   }
 }

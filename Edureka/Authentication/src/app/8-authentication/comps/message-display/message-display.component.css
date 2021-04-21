@@ -1,0 +1,33 @@
+.fade-error {
+  animation: fadebackground 6s;
+  color: black;
+  background-color: lightsalmon;
+}
+@keyframes fadebackground {
+  from {
+    color: wheat;
+    background-color: orange;
+  }
+  to {
+    color: black;
+    background-color: lightsalmon;
+  }
+}
+.message {
+  width: -webkit-fill-available;
+  position: relative;
+  float: left;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+  font-size: large;
+}
+#messageContainer {
+  overflow-anchor: none;
+  overflow: scroll;
+  max-height: 100px;
+}
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
+}

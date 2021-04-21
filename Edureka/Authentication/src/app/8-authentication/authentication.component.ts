@@ -12,6 +12,7 @@ export class AuthenticationComponent implements OnInit {
     { path: URL_PATH.HOME, text: "Home", options: "" },
     { path: URL_PATH.LOGIN, text: "Login", options: "" },
     { path: URL_PATH.LIST, text: "List Users", options: "" },
+    { path: URL_PATH.PROTECTED, text: "Secret", options: "" },
     { path: URL_PATH.LOGOUT, text: "Logout", options: "" },
   ];
 

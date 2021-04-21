@@ -11,12 +11,9 @@ import { LogService } from "../_services/log-service";
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
-  constructor(private log: LogService) {
-    console.log("LoggingInterceptor::constructor");
-  }
+  constructor(private log: LogService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    console.log("LoggingInterceptor::intercept()");
     const started = Date.now();
     let ok: string;
 

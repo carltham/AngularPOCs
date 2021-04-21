@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { AlertService } from "../_services/alert.service";
+import { AuthAlertService } from "../_services/auth-alert.service";
 
 @Component({
   selector: "app-alert",
@@ -11,7 +11,7 @@ export class AuthAlertComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   message: any;
 
-  constructor(private alertService: AlertService) {}
+  constructor(private alertService: AuthAlertService) {}
 
   ngOnInit() {
     this.subscription = this.alertService.getAlert().subscribe((message) => {

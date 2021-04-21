@@ -1,18 +1,22 @@
 <div class="panel rounded centeredText">
   <div class="content">
     <div class="dialog">
-      <div class="width50p centered" *ngIf="isAuthenticated() === true">
+      <message></message>
+      <!-- Logged in -->
+      <div class="width50p centered" *ngIf="isAuthenticated === true">
         You are logged in ( as {{ loggedinUser?.firstName }} ) !!
       </div>
+
+      <!-- Log in -->
       <div
         class="width50p centered"
         *ngIf="
-          isAuthenticated() === false &&
+          isAuthenticated === false &&
           (state === '' || (selectedUser && selectedUser.id >= 0))
         "
       >
-        Welcome user {{ selectedUser?.firstName }}, please login (
-        {{ selectedUser.username }} )!
+        Welcome user {{ selectedUser?.firstName }}, be p(r)etty please login (
+        {{ selectedUser.auth?.username }} )!
         <div class="panel rounded centeredText">
           <table>
             <tbody>
@@ -24,6 +28,7 @@
                     type="text"
                     placeholder="Type your username"
                     [(ngModel)]="username"
+                    autofocus
                   />
                 </td>
               </tr>
@@ -41,18 +46,24 @@
               <tr>
                 <td>Login:</td>
                 <td>
-                  <button
-                    *ngIf="isAuthenticated() === false"
-                    (click)="doLogin()"
-                  >
+                  <button *ngIf="isAuthenticated === false" (click)="doLogin()">
                     click here
                   </button>
+                </td>
+                <td>
+                  <a
+                    routerLink="../register"
+                    class="btn btn-success btn btn-link"
+                    >Register</a
+                  >
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+
+      <!-- Users List -->
       <div
         class="width50p centered"
         *ngIf="state === 'LIST' && selectedUser.id < 0"
@@ -66,6 +77,13 @@
           >
             <label (click)="selectUser(user.id)" class="linkLookAlike">
               {{ user.firstName }}
+            </label>
+            <label
+              *ngIf="isAuthenticated"
+              (click)="deleteUser(user.id)"
+              class="linkLookAlike"
+            >
+              delete
             </label>
           </li>
         </ul>

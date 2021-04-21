@@ -7,61 +7,18 @@ import { emptyUser, User } from "../../domain/user";
   providedIn: "root",
 })
 export class UserService {
-  users: User[] = [
-    {
-      id: 0,
-      username: "aaaa",
-      password: "aaaa",
-      firstName: "AAAA",
-      lastName: "AAAA",
-      token: "",
-    },
-    {
-      id: 100,
-      username: "bbbb",
-      password: "bbbb",
-      firstName: "BBBB",
-      lastName: "AAAA",
-      token: "",
-    },
-    {
-      id: 101,
-      username: "zzzz",
-      password: "zzzz",
-      firstName: "ZZZZ",
-      lastName: "AAAA",
-      token: "",
-    },
-    {
-      id: 151,
-      username: "xxxx",
-      password: "xxxx",
-      firstName: "XXXX",
-      lastName: "AAAA",
-      token: "",
-    },
-    {
-      id: 199,
-      username: "xxxy",
-      password: "xxxy",
-      firstName: "XXXY",
-      lastName: "AAAA",
-      token: "",
-    },
-  ];
-
   constructor(private http: HttpClient) {}
 
   public getUser(id: number) {
-    let foundUser = this.users.find((user) => {
-      return user.id === id;
-    });
-
-    return foundUser ? foundUser : emptyUser;
+    return this.http.get<User>("/api/user/" + id);
   }
 
   list() {
     return this.http.get<User[]>("/api/users");
+  }
+
+  delete(id: number) {
+    return this.http.delete("/api/user/" + id);
   }
 
   getHeaders() {

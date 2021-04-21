@@ -18,17 +18,10 @@ let users = usersString ? JSON.parse(usersString) : [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
-  start() {
-    console.log("FakeBackendInterceptor::start()");
-  }
-  constructor() {
-    console.log("FakeBackendInterceptor::constructor");
-  }
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log("FakeBackendInterceptor::intercept()");
     const { url, method, headers, body } = request;
 
     // wrap in delayed observable to simulate server api call
@@ -73,12 +66,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok();
     }
     function isLoggedIn() {
-      console.log("FakeBackendInterceptor::isLoggedIn:moment() = ", moment());
-      console.log(
-        "FakeBackendInterceptor::isLoggedIn:moment().isBefore(getExpiration()) = ",
-        moment().isBefore(getExpiration())
-      );
-
       return (
         headers.get("Authorization") === "Bearer fake-jwt-token" &&
         moment().isBefore(getExpiration())
@@ -87,18 +74,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function getExpiration() {
       const expiration = localStorage.getItem("expires_at");
-      const id_token = localStorage.getItem("id_token");
       let expiresAt;
       let expiresMoment;
       if (expiration) {
         expiresAt = JSON.parse(expiration);
         expiresMoment = moment(expiresAt);
       }
-      console.log("FakeBackendInterceptor::isLoggedIn::headers = ", headers);
-      console.log("expiration = ", expiration);
-      console.log("expiresAt = ", expiresAt);
-      console.log("expiresMoment = ", expiresMoment);
-      console.log("id_token = ", id_token);
       return moment(expiresAt);
     }
 
@@ -107,7 +88,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function authenticate() {
       const { username, password } = body;
       const user = users.find(
-        (x: User) => x.username === username && x.password === password
+        (user: User) =>
+          user.auth?.username === username && user.auth?.password === password
       );
       if (!user) {
         return error("Username or password is incorrect");
@@ -126,7 +108,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       const requestedUser = body;
 
       if (
-        users.find((user: User) => user.username === requestedUser.username)
+        users.find(
+          (user: User) => user.auth?.username === requestedUser.username
+        )
       ) {
         return error(
           'Username "' + requestedUser.username + '" is already taken'

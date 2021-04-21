@@ -1,13 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { first } from "rxjs/operators";
-
-import { AuthUserService } from "../_services/auth-user.service";
-import { AuthenticationService } from "../_services/authentication.service";
-import { AlertService } from "../_services/alert.service";
-import { URL_PATH } from "../../../support/url-paths";
+import { SystemService } from "../../../8-authentication/services/system.service";
 import { emptyUser } from "../../../domain/user";
+import { URL_PATH } from "../../../support/url-paths";
+import { AuthAlertService } from "../_services/auth-alert.service";
+import { AuthUserService } from "../_services/auth-user.service";
 
 @Component({
   selector: "app-register",
@@ -21,13 +20,11 @@ export class AuthRegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService,
+    private systemService: SystemService,
     private userService: AuthUserService,
-    private alertService: AlertService
+    private alertService: AuthAlertService
   ) {
-    console.log("AuthRegisterComponent::constructor");
-
-    if (this.authenticationService.currentUserValue !== emptyUser) {
+    if (this.systemService.loggedinUser !== emptyUser) {
       this.router.navigate(["/"]);
     }
   }

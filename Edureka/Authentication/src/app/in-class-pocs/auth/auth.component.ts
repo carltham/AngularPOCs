@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthenticationService } from "./_services/authentication.service";
+import { AuthenticationService } from "../../8-authentication/services/authentication.service";
+import { SystemService } from "../../8-authentication/services/system.service";
 import { URL_PATH } from "../../support/url-paths";
-import { emptyUser, User } from "../../domain/user";
 
 @Component({
   selector: "auth-root",
@@ -10,24 +10,23 @@ import { emptyUser, User } from "../../domain/user";
   styleUrls: ["./auth.component.css"],
 })
 export class AuthComponent {
-  currentUser: User = emptyUser;
   title = "Module8Demo2";
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
-  ) {
-    this.authenticationService.currentUser.subscribe(
-      (x) => (this.currentUser = x)
-    );
-  }
+    private authenticationService: AuthenticationService,
+    private systemService: SystemService
+  ) {}
 
   logout() {
-    this.authenticationService.logout();
+    this.systemService.logout();
     setTimeout(() => {
       this.router.navigate([
         URL_PATH.INCLASS + "/" + URL_PATH.AUTH + "/" + URL_PATH.LOGIN,
       ]);
     }, 3000);
+  }
+  get loggedinUser() {
+    return this.systemService.loggedinUser;
   }
 }

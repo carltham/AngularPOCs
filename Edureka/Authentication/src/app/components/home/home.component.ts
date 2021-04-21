@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
+import { SystemService } from "../../8-authentication/services/system.service";
 import { UserService } from "../../8-authentication/services/user.service";
 import { emptyUser, User } from "../../domain/user";
 import { URL_PATH } from "../../support/url-paths";
@@ -19,15 +20,16 @@ export class HomeComponent implements OnInit {
   constructor(
     private navHandler: NavHandlerService,
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private systemService: SystemService
   ) {}
-
-  isLoggedin() {
-    return this.navHandler.isAuthenticated();
-  }
 
   doLogin() {
     this.navHandler.toPath(URL_PATH.LOGIN);
+  }
+
+  isLoggedin() {
+    return this.systemService.isLoggedIn();
   }
 
   selectUser(id: number) {

@@ -1,11 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AuthenticationHomeComponent } from "./authentication-home/authentication-home.component";
-import { AuthenticationLoginComponent } from "./authentication-login/authentication-login.component";
-import { AuthenticationRegisterComponent } from "./authentication-register/authentication-register.component";
 import { AuthenticationRoutingModule } from "./authentication-routing/authentication-routing.module";
 import { AuthenticationComponent } from "./authentication.component";
+import { AuthenticationHomeComponent } from "./comps/home/home.component";
+import { AuthenticationLoginComponent } from "./comps/login/login.component";
+import { AuthenticationRegisterComponent } from "./comps/register/register.component";
+import { MessageDisplayComponent } from "./comps/message-display/message-display.component";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AuthenticationComponent } from "./authentication.component";
     AuthenticationLoginComponent,
     AuthenticationRegisterComponent,
     AuthenticationHomeComponent,
+    MessageDisplayComponent,
   ],
   imports: [
     FormsModule,

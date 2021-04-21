@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { first } from "rxjs/operators";
-
-import { AuthenticationService } from "../_services/authentication.service";
-import { AuthUserService } from "../_services/auth-user.service";
+import { SystemService } from "../../../8-authentication/services/system.service";
 import { User } from "../../../domain/user";
+import { AuthUserService } from "../_services/auth-user.service";
 
 @Component({
   selector: "app-home",
@@ -11,34 +10,33 @@ import { User } from "../../../domain/user";
   styleUrls: ["./auth-home.component.css"],
 })
 export class AuthHomeComponent implements OnInit {
-  currentUser: User;
   users: User[] = [];
 
   constructor(
-    private authenticationService: AuthenticationService,
-    private userService: AuthUserService
-  ) {
-    this.currentUser = this.authenticationService.currentUserValue;
-  }
+    private systemService: SystemService,
+    private authUserService: AuthUserService
+  ) {}
 
   ngOnInit() {
     this.loadAllUsers();
   }
 
   deleteUser(id: number) {
-    this.userService
+    this.authUserService
       .delete(id)
       .pipe(first())
       .subscribe(() => this.loadAllUsers());
   }
 
   private loadAllUsers() {
-    this.userService
+    this.authUserService
       .getAll()
       .pipe(first())
       .subscribe((users) => {
         this.users = users;
-        console.log("this.users = ", this.users);
       });
+  }
+  get loggedinUser() {
+    return this, this.systemService.loggedinUser;
   }
 }

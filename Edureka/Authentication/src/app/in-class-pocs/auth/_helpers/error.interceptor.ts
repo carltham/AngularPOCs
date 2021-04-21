@@ -1,20 +1,17 @@
-import { Injectable } from "@angular/core";
 import {
-  HttpRequest,
-  HttpHandler,
   HttpEvent,
+  HttpHandler,
   HttpInterceptor,
+  HttpRequest,
 } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-
-import { AuthenticationService } from "../_services/authentication.service";
+import { SystemService } from "../../../8-authentication/services/system.service";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) {
-    console.log("ErrorInterceptor::constructor");
-  }
+  constructor(private systemService: SystemService) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -24,7 +21,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((err) => {
         if (err.status === 401) {
           // auto logout if 401 response returned from api
-          this.authenticationService.logout();
+          this.systemService.logout();
           location.reload(true);
         }
 

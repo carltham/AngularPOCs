@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { AppRoutingModule } from "src/app/routing/app-routing.module";
 import { NavHandlerService } from "src/app/services/5-navigation/nav-handler.service";
 
-import { AuthenticationLoginComponent } from "./authentication-login.component";
+import { AuthenticationLoginComponent } from "./login.component";
 
 describe("AuthenticationLoginComponent", () => {
   let component: AuthenticationLoginComponent;
@@ -11,7 +11,7 @@ describe("AuthenticationLoginComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AuthenticationLoginComponent],
+      declarations: [],
       imports: [AppRoutingModule],
       providers: [NavHandlerService],
     })

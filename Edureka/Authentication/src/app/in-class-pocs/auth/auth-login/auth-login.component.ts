@@ -1,11 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { first } from "rxjs/operators";
-
-import { AuthenticationService } from "../_services/authentication.service";
-import { AlertService } from "../_services/alert.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AuthenticationService } from "../../../8-authentication/services/authentication.service";
+import { SystemService } from "../../../8-authentication/services/system.service";
 import { emptyUser } from "../../../domain/user";
+import { AuthAlertService } from "../_services/auth-alert.service";
 
 @Component({
   selector: "app-login",
@@ -23,14 +22,15 @@ export class AuthLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private alertService: AlertService
+    private systemService: SystemService,
+    private alertService: AuthAlertService
   ) {
     console.log(
-      "this.authenticationService.currentUserValue = ",
-      this.authenticationService.currentUserValue
+      "this.systemService.loggedinUser = ",
+      this.systemService.loggedinUser
     );
 
-    if (this.authenticationService.currentUserValue !== emptyUser) {
+    if (this.systemService.loggedinUser !== emptyUser) {
       this.router.navigate(["/"]);
     }
   }
@@ -60,17 +60,19 @@ export class AuthLoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService
-      .login(this.f.username.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        (data) => {
-          this.router.navigate([this.returnUrl]);
-        },
-        (error) => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
+    let credentials = {
+      username: this.f.username.value,
+      password: this.f.password.value,
+    };
+    this.authenticationService.login(credentials);
+    if (this.systemService.isLoggedIn()) {
+      this.router.navigate([this.returnUrl]);
+    } else {
+      this.alertService.error(
+        "Something went wrong at login of user with username : " +
+          credentials.username
       );
+      this.loading = false;
+    }
   }
 }

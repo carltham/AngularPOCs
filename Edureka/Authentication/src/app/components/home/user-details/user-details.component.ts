@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Header } from "../../../../../tserver/src/domain/Header";
 import { UserService } from "../../../8-authentication/services/user.service";
-import { User } from "../../../domain/user";
+import { User, emptyUser } from "../../../domain/user";
 import { NavHandlerService } from "../../../services/5-navigation/nav-handler.service";
 import { URL_PATH } from "../../../support/url-paths";
 
@@ -21,7 +21,7 @@ export class UserDetailsComponent implements OnInit {
     private routeInfo: ActivatedRoute,
     private userService: UserService
   ) {
-    this.selectedUser = userService.getUser(-1);
+    this.selectedUser = emptyUser;
   }
 
   goBack() {
@@ -32,7 +32,9 @@ export class UserDetailsComponent implements OnInit {
     let id = this.routeInfo.snapshot.paramMap.get("id");
     let number = id ? parseInt(id, 10) : -1;
     this.selectedUserId = "" + number !== "NaN" ? number : -1;
-    this.selectedUser = this.userService.getUser(this.selectedUserId);
+    this.userService.getUser(this.selectedUserId).subscribe((data: User) => {
+      this.selectedUser = data;
+    });
   }
 
   get headers(): Header[] {

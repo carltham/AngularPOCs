@@ -8,7 +8,7 @@ import {
 } from "@angular/router";
 import { filter, pairwise } from "rxjs/operators";
 import { Processor } from "src/app/domain/local/functional-interfaces/processor";
-import { AuthService } from "../8-Authentication/auth.service";
+import { AuthenticationService } from "../../8-authentication/services/authentication.service";
 
 @Injectable({
   providedIn: "root",
@@ -25,13 +25,12 @@ export class NavHandlerService {
   routerLocked = false;
   historyUrlsArray: string[] = [];
   startingUrl = "/";
-  _isAuthenticated: boolean = false;
   blockRepettitiveCalls = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthenticationService
   ) {
     this.historyUrlsArray.push(this.startingUrl);
     this.router.events
@@ -66,13 +65,6 @@ export class NavHandlerService {
         processor.process(value);
       }
     });
-  }
-
-  isAuthenticated() {
-    if (!this._isAuthenticated) {
-      this._isAuthenticated = this.authService.isLoggedin();
-    }
-    return this._isAuthenticated;
   }
 
   navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {

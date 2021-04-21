@@ -1,0 +1,10 @@
+<div id="messageContainer">
+  <div
+    *ngFor="let message of messages"
+    class="panel rounded centeredText message {{ cssClass(message) }}"
+  >
+    <a class="close" (click)="removeMessage(message)">&times;</a>
+    <span [innerHTML]="message.timeStamped + ':: ' + message.text"></span>
+  </div>
+  <div id="anchor"></div>
+</div>

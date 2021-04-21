@@ -31,7 +31,7 @@ import { ExternalEmplService } from "./services/4-services/external-employee-ser
 import { FakeEmplService } from "./services/4-services/fake-employee-service";
 import { NavHandlerService } from "./services/5-navigation/nav-handler.service";
 import { ProductsService } from "./services/5-navigation/shopping/product/products-service.service";
-import { GlobalErrorHandler } from "./support/globalErrorHandler";
+import { GlobalErrorHandler } from "./interceptors/globalErrorHandler";
 
 @NgModule({
   declarations: [
