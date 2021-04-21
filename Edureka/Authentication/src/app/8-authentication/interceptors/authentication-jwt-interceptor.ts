@@ -6,6 +6,7 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "../environments/environment";
 
 @Injectable()
 export class AuthenticationJWTInterceptor implements HttpInterceptor {
@@ -13,7 +14,8 @@ export class AuthenticationJWTInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.url.startsWith("/security") || req.url.startsWith("/api")) {
+    let shortUrl = req.url.replace(environment.apiUrl, "");
+    if (shortUrl.startsWith("/security") || shortUrl.startsWith("/api")) {
       const idToken = localStorage.getItem("id_token");
 
       if (idToken) {

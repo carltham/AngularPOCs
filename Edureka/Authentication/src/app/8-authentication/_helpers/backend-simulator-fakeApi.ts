@@ -11,6 +11,7 @@ import { Observable, of, throwError } from "rxjs";
 import { delay, dematerialize, materialize, mergeMap } from "rxjs/operators";
 import { User, Auth, emptyUser } from "../../domain/user";
 import { Message, MessageType } from "../domain/message";
+import { environment } from "../environments/environment";
 
 // array in local storage for registered users
 let usersString = localStorage.getItem("users");
@@ -32,16 +33,21 @@ export class Backend_Simulator_FakeApi implements HttpInterceptor {
       .pipe(dematerialize());
 
     function handleRoute() {
+      let shortUrl = url.replace(environment.apiUrl, "");
+      console.log("shortUrl = ", shortUrl);
+      console.log("method = ", method);
+      console.log("isLoggedIn() = ", isLoggedIn());
+
       switch (true) {
-        case url.endsWith("/security/register") && method === "POST":
+        case shortUrl.endsWith("/security/register") && method === "POST":
           return register();
-        case url.endsWith("/security/login") && method === "POST":
+        case shortUrl.endsWith("/security/login") && method === "POST":
           return authenticate();
-        case url.match(/\/api\/user\/\d+$/) && method === "GET":
+        case shortUrl.match(/\/api\/user\/\d+$/) && method === "GET":
           return getUser();
-        case url.endsWith("/api/users") && method === "GET":
+        case shortUrl.endsWith("/api/users") && method === "GET":
           return getUsers();
-        case url.match("api/user/d*") && method === "DELETE":
+        case shortUrl.match("/api/user/d*") && method === "DELETE":
           return deleteUser();
         default:
           // pass through any requests not handled above

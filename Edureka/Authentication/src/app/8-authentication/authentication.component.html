@@ -1,5 +1,5 @@
 <div class="dialog">
-  <h2 class="centered">Welcome to Validation ( of forms ) !!</h2>
+  <h2 class="centered">Welcome to Authentication ( of your application ) !!</h2>
 </div>
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -11,6 +11,13 @@
           [routerLinkActiveOptions]="route.options"
         >
           <a [routerLink]="route.path">{{ route.text }}</a>
+        </li>
+        <li
+          *ngIf="isAuthenticated"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a [routerLink]="['logout']">Logout</a>
         </li>
       </ul>
     </nav>

@@ -94,6 +94,10 @@ label {
   color: darkblue;
   text-decoration: underline;
 }
+.linkLookAlike.selected {
+  color: darkblue;
+  text-decoration: underline;
+}
 
 .listButton {
   margin: 2px;

@@ -7,6 +7,41 @@
         You are logged in ( as {{ loggedinUser?.firstName }} ) !!
       </div>
 
+      <!-- Users List -->
+      <div class="width50p centered" *ngIf="state === 'LIST'">
+        Select a user to login !! ( To reach secured areas )
+        <ul>
+          <li
+            class="listButton"
+            [class.selected]="hasControlledUserDetails(user.id)"
+            *ngFor="let user of knownUsers"
+          >
+            <label
+              *ngIf="!isAuthenticated"
+              (click)="selectUser(user.id)"
+              class="linkLookAlike"
+            >
+              {{ user.firstName }}
+            </label>
+            <label
+              [ngClass]="{
+                selected: loggedinUser.id === user.id
+              }"
+              *ngIf="isAuthenticated"
+            >
+              {{ user.firstName }}
+            </label>
+            <label
+              *ngIf="isAuthenticated"
+              (click)="deleteUser(user.id)"
+              class="linkLookAlike"
+            >
+              delete
+            </label>
+          </li>
+        </ul>
+      </div>
+
       <!-- Log in -->
       <div
         class="width50p centered"
@@ -44,6 +79,10 @@
                 </td>
               </tr>
               <tr>
+                <td>:</td>
+                <td>(pretty)</td>
+              </tr>
+              <tr>
                 <td>Login:</td>
                 <td>
                   <button *ngIf="isAuthenticated === false" (click)="doLogin()">
@@ -61,32 +100,6 @@
             </tbody>
           </table>
         </div>
-      </div>
-
-      <!-- Users List -->
-      <div
-        class="width50p centered"
-        *ngIf="state === 'LIST' && selectedUser.id < 0"
-      >
-        Select a user to login !! ( To reach secured areas )
-        <ul>
-          <li
-            class="listButton"
-            [class.selected]="hasControlledUserDetails(user.id)"
-            *ngFor="let user of knownUsers"
-          >
-            <label (click)="selectUser(user.id)" class="linkLookAlike">
-              {{ user.firstName }}
-            </label>
-            <label
-              *ngIf="isAuthenticated"
-              (click)="deleteUser(user.id)"
-              class="linkLookAlike"
-            >
-              delete
-            </label>
-          </li>
-        </ul>
       </div>
     </div>
   </div>

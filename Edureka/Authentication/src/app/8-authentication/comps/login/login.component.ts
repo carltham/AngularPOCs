@@ -45,6 +45,9 @@ export class AuthenticationLoginComponent implements OnInit {
         "AuthenticationLoginComponent::doLogin::this._userName && this._userName.length = ",
         this._userName && this._userName.length
       );
+      this.state = "";
+      console.log("1.doLogin::this.state = ", this.state);
+      let tmpUser = this.knownUsers.pop();
       this.authenticationService
         .login({
           username: this.username,
@@ -53,8 +56,13 @@ export class AuthenticationLoginComponent implements OnInit {
         .subscribe((res: any) => {
           console.log("doLogin::res = ", res);
 
+          tmpUser ? this.knownUsers.push(tmpUser) : "";
+          console.log("2.doLogin::this.state = ", this.state);
+
           this.systemService.setSession(res);
           this.load();
+          this.state = Constants.LIST;
+          console.log("3.doLogin::this.state = ", this.state);
         });
     }
     console.log("AuthenticationLoginComponent::doLogin::exit");
@@ -62,6 +70,7 @@ export class AuthenticationLoginComponent implements OnInit {
 
   selectUser(id: number) {
     this.selectedUserId = id;
+    this.state = "";
     const foundUser = this.knownUsers.find((user) => user.id === id);
     if (foundUser) {
       this.selectedUser = foundUser;
